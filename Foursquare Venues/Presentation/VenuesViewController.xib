@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VenuesViewController" customModule="Foursquare_Venues" customModuleProvider="target">
             <connections>
+                <outlet property="distanceLabel" destination="6Zd-di-mjY" id="RG5-71-Q66"/>
+                <outlet property="distanceSlider" destination="USU-Av-bfi" id="1zd-HD-tZD"/>
+                <outlet property="tableView" destination="mSh-u6-aSu" id="9lO-hR-psZ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Oiv-MP-Ts4"/>
             </connections>
         </placeholder>
@@ -18,16 +21,34 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waW-kU-ca1">
-                    <rect key="frame" x="175" y="416" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mSh-u6-aSu">
+                    <rect key="frame" x="0.0" y="149.33333333333331" width="393" height="668.66666666666674"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="USU-Av-bfi">
+                    <rect key="frame" x="14" y="103.33333333333333" width="365" height="30.999999999999986"/>
+                </slider>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zd-di-mjY">
+                    <rect key="frame" x="16" y="75" width="361" height="20.333333333333329"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mSh-u6-aSu" secondAttribute="bottom" id="C9P-5t-alf"/>
+                <constraint firstItem="mSh-u6-aSu" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="RE6-TE-cx0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6Zd-di-mjY" secondAttribute="trailing" constant="16" id="TPq-Zu-KBx"/>
+                <constraint firstItem="USU-Av-bfi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Tkw-u7-Ya1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="USU-Av-bfi" secondAttribute="trailing" constant="16" id="X2W-5M-tEM"/>
+                <constraint firstItem="6Zd-di-mjY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="ame-ca-7mP"/>
+                <constraint firstItem="6Zd-di-mjY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="bta-xm-MGU"/>
+                <constraint firstItem="USU-Av-bfi" firstAttribute="top" secondItem="6Zd-di-mjY" secondAttribute="bottom" constant="8" id="phF-0j-5tO"/>
+                <constraint firstItem="mSh-u6-aSu" firstAttribute="top" secondItem="USU-Av-bfi" secondAttribute="bottom" constant="16" id="v8E-0M-GfE"/>
+                <constraint firstItem="mSh-u6-aSu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="z8V-qq-eaQ"/>
+            </constraints>
             <point key="canvasLocation" x="138" y="21"/>
         </view>
     </objects>

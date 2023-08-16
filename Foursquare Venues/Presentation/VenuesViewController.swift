@@ -8,12 +8,15 @@
 import UIKit
 
 class VenuesViewController: UIViewController {
-
+    
+    @IBOutlet private weak var distanceLabel: UILabel!
+    @IBOutlet private weak var distanceSlider: UISlider!
+    @IBOutlet private weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.title = "Venues around you" // Localization?
     }
-
-
 }
 
