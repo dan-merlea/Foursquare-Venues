@@ -37,6 +37,8 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     private let interactor: VenuesInteractor
     private var subscriptions = Set<AnyCancellable>()
     private var searchSubscription: AnyCancellable?
+    private var inputsSubscription: AnyCancellable?
+    private var lastLocationAvailable: CLLocationCoordinate2D?
     
     init(interactor: VenuesInteractor) {
         self.venues = venuesSubject.eraseToAnyPublisher()
@@ -87,18 +89,19 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     }
     
     private func subscribeForInputUpdates() {
-        Publishers.CombineLatest(
+        inputsSubscription = Publishers.CombineLatest(
             interactor.subscribeForLocationChanges(),
             radiusSubject.throttle(for: .milliseconds(500), scheduler: DispatchQueue.main, latest: true)
         )
         .sink { [weak self] location, _ in
             self?.searchForVenues(location: location.coordinate)
         }
-        .store(in: &subscriptions)
     }
     
     private func searchForVenues(location: CLLocationCoordinate2D) {
         searchSubscription?.cancel() /// avoid spamming the API
+        
+        lastLocationAvailable = location
         
         searchSubscription = interactor
             .searchForVenues(radius: radiusValueToMeters(), location: location)
@@ -119,8 +122,17 @@ final class DefaultVenuesViewModel: VenuesViewModel {
         switch status {
         case .failure(let error):
             venuesSubject.send([])
+            inputsSubscription?.cancel()
             errorHandled?.handle(error) { [weak self] in
-                // todo
+                guard let self = self else { return }
+                
+                /// Re-Subscribe to input events
+                self.subscribeForInputUpdates()
+                
+                /// Force a reload
+                if let location = self.lastLocationAvailable {
+                    self.searchForVenues(location: location)
+                }
             }
         default: ()
         }
