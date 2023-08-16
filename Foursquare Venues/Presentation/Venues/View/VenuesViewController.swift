@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class VenuesViewController: UIViewController {
     
@@ -14,6 +15,7 @@ class VenuesViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let viewModel: VenuesViewModel
+    private var subscriptions = Set<AnyCancellable>()
     
     init(viewModel: VenuesViewModel) {
         self.viewModel = viewModel
@@ -32,16 +34,27 @@ class VenuesViewController: UIViewController {
         
         configureTableView()
         configureDistanceSlider()
+        subscribeForUpdates()
     }
     
-    func configureTableView() {
+    private func configureTableView() {
         tableView.dataSource = self
         tableView.register(VenueTableViewCell.self)
     }
     
-    func configureDistanceSlider() {
+    private func configureDistanceSlider() {
         distanceSlider.value = viewModel.getCurrentSearchRadius()
         distanceLabel.text = viewModel.getCurrentSearchRadiusText()
+    }
+    
+    private func subscribeForUpdates() {
+        viewModel
+            .venues
+            .receive(on: DispatchQueue.main)
+            .sink { result in
+                print(result)
+            }
+            .store(in: &subscriptions)
     }
 }
 
