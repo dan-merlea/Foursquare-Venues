@@ -13,5 +13,5 @@ protocol Permissions: AnyObject {
 
     var status: AnyPublisher<Status, Never> { get }
 
-    func request()
+    func request() -> Future<Status, Never>
 }

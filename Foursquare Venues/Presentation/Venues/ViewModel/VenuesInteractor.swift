@@ -29,14 +29,7 @@ final class DefaultVenuesInteractor<PermissionsType: Permissions>: VenuesInterac
     }
     
     func askForLocationPermission() -> Future<CLAuthorizationStatus, Never> {
-        Future { [weak self] promise in
-            guard let self = self else { return }
-
-            self.locationPermissions.status
-                .sink { promise(.success($0)) }
-                .store(in: &self.subscriptions)
-            self.locationPermissions.request()
-        }
+        locationPermissions.request()
     }
     
     func searchForVenues(radius: Int) -> AnyPublisher<ApiResponseBody, ServerErrorState> {

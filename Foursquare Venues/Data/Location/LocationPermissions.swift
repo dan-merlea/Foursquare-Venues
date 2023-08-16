@@ -33,8 +33,15 @@ class LocationPermissions: NSObject, Permissions {
         self.manager.delegate = self
     }
     
-    func request() {
-        self.manager.requestWhenInUseAuthorization()
+    func request() -> Future<CLAuthorizationStatus, Never> {
+        Future { [weak self] promise in
+            guard let self = self else { return }
+
+            self.status
+                .sink { promise(.success($0)) }
+                .store(in: &self.subscriptions)
+            self.manager.requestWhenInUseAuthorization()
+        }
     }
 }
 
