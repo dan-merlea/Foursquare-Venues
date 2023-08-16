@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		0DF183C22A8CEF1800E9869B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183C12A8CEF1800E9869B /* AppDelegate.swift */; };
 		0DF183C42A8CEF1800E9869B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183C32A8CEF1800E9869B /* SceneDelegate.swift */; };
-		0DF183C62A8CEF1800E9869B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183C52A8CEF1800E9869B /* ViewController.swift */; };
-		0DF183C92A8CEF1800E9869B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF183C72A8CEF1800E9869B /* Main.storyboard */; };
+		0DF183C62A8CEF1800E9869B /* VenuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183C52A8CEF1800E9869B /* VenuesViewController.swift */; };
 		0DF183CB2A8CEF1900E9869B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DF183CA2A8CEF1900E9869B /* Assets.xcassets */; };
 		0DF183CE2A8CEF1900E9869B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF183CC2A8CEF1900E9869B /* LaunchScreen.storyboard */; };
+		0DF183D82A8CF02700E9869B /* VenuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF183D72A8CF02700E9869B /* VenuesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0DF183BE2A8CEF1800E9869B /* Foursquare Venues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Foursquare Venues.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF183C12A8CEF1800E9869B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DF183C32A8CEF1800E9869B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0DF183C52A8CEF1800E9869B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0DF183C82A8CEF1800E9869B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0DF183C52A8CEF1800E9869B /* VenuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesViewController.swift; sourceTree = "<group>"; };
 		0DF183CA2A8CEF1900E9869B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DF183CD2A8CEF1900E9869B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DF183CF2A8CEF1900E9869B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0DF183D72A8CF02700E9869B /* VenuesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VenuesViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +56,31 @@
 		0DF183C02A8CEF1800E9869B /* Foursquare Venues */ = {
 			isa = PBXGroup;
 			children = (
+				0DF183D62A8CEF7B00E9869B /* Configuration */,
+				0DF183D52A8CEF5200E9869B /* Application */,
+				0DF183C52A8CEF1800E9869B /* VenuesViewController.swift */,
+				0DF183D72A8CF02700E9869B /* VenuesViewController.xib */,
+			);
+			path = "Foursquare Venues";
+			sourceTree = "<group>";
+		};
+		0DF183D52A8CEF5200E9869B /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				0DF183C12A8CEF1800E9869B /* AppDelegate.swift */,
 				0DF183C32A8CEF1800E9869B /* SceneDelegate.swift */,
-				0DF183C52A8CEF1800E9869B /* ViewController.swift */,
-				0DF183C72A8CEF1800E9869B /* Main.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		0DF183D62A8CEF7B00E9869B /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
 				0DF183CA2A8CEF1900E9869B /* Assets.xcassets */,
 				0DF183CC2A8CEF1900E9869B /* LaunchScreen.storyboard */,
 				0DF183CF2A8CEF1900E9869B /* Info.plist */,
 			);
-			path = "Foursquare Venues";
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,8 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DF183CE2A8CEF1900E9869B /* LaunchScreen.storyboard in Resources */,
+				0DF183D82A8CF02700E9869B /* VenuesViewController.xib in Resources */,
 				0DF183CB2A8CEF1900E9869B /* Assets.xcassets in Resources */,
-				0DF183C92A8CEF1800E9869B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DF183C62A8CEF1800E9869B /* ViewController.swift in Sources */,
+				0DF183C62A8CEF1800E9869B /* VenuesViewController.swift in Sources */,
 				0DF183C22A8CEF1800E9869B /* AppDelegate.swift in Sources */,
 				0DF183C42A8CEF1800E9869B /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +163,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0DF183C72A8CEF1800E9869B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0DF183C82A8CEF1800E9869B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0DF183CC2A8CEF1900E9869B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,7 +297,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N4SQL6EMX7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Foursquare Venues/Info.plist";
+				INFOPLIST_FILE = "Foursquare Venues/Configuration/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +325,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N4SQL6EMX7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Foursquare Venues/Info.plist";
+				INFOPLIST_FILE = "Foursquare Venues/Configuration/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
