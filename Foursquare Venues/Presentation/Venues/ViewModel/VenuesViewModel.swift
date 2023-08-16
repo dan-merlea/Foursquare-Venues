@@ -62,8 +62,20 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     private func subscribeForInputUpdates() {
         radiusSubject
             .throttle(for: .milliseconds(500), scheduler: DispatchQueue.main, latest: true)
-            .sink { radius in
-                print(radius)
+            .sink { [weak self] _ in
+                self?.searchForVenues()
+            }
+            .store(in: &subscriptions)
+    }
+    
+    private func searchForVenues() {
+        
+        interactor.searchForVenues(radius: radiusValueToMeters())
+            .receive(on: DispatchQueue.main)
+            .sink { status in
+                print(status)
+            } receiveValue: { result in
+                print(result)
             }
             .store(in: &subscriptions)
     }

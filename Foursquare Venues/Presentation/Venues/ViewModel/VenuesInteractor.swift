@@ -9,7 +9,7 @@ import Combine
 import CoreLocation
 
 protocol VenuesInteractor {
-    func searchForVenues() -> AnyPublisher<ApiResponseBody, ServerErrorState>
+    func searchForVenues(radius: Int) -> AnyPublisher<ApiResponseBody, ServerErrorState>
 }
 
 final class DefaultVenuesInteractor: VenuesInteractor {
@@ -21,8 +21,8 @@ final class DefaultVenuesInteractor: VenuesInteractor {
         self.networkService = networkService
     }
     
-    func searchForVenues() -> AnyPublisher<ApiResponseBody, ServerErrorState> {
-        let route = VenuesSearchRoute(ll: CLLocationCoordinate2D(latitude: 23, longitude: 44), radius: 500, limit: 20)
+    func searchForVenues(radius: Int) -> AnyPublisher<ApiResponseBody, ServerErrorState> {
+        let route = VenuesSearchRoute(ll: CLLocationCoordinate2D(latitude: 52.3547418, longitude: 4.8215606), radius: radius, limit: 20)
         return networkService.request(route: route)
     }
 }
