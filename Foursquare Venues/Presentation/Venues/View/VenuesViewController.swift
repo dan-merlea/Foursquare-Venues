@@ -27,7 +27,16 @@ class VenuesViewController: UIViewController {
     }
 }
 
-// MARK: -
+// MARK: - Actions
+
+extension VenuesViewController {
+    @IBAction private func sliderAction(_ sender: UISlider) {
+        print(sender.value)
+    }
+}
+
+
+// MARK: - UITableViewDataSource
 
 extension VenuesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
