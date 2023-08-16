@@ -9,6 +9,8 @@ import UIKit
 
 final class VenuesCoordinator: Coordinator {
     
+    let networkService = DefaultNetworkService()
+    
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
@@ -17,7 +19,8 @@ final class VenuesCoordinator: Coordinator {
     }
     
     func start() {
-        let viewModel = DefaultVenuesViewModel()
+        let interactor = DefaultVenuesInteractor(networkService: networkService)
+        let viewModel = DefaultVenuesViewModel(interactor: interactor)
         let viewController = VenuesViewController(viewModel: viewModel)
         navigationController.viewControllers = [viewController]
     }

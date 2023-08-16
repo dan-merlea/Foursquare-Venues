@@ -21,6 +21,12 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     
     private let radiusSubject = CurrentValueSubject<Float, Never>(0.3)
     
+    /// Data
+    private let interactor: VenuesInteractor
+    
+    init(interactor: VenuesInteractor) {
+        self.interactor = interactor
+    }
     
     // MARK: - Public
     

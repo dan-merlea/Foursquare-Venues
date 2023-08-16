@@ -30,6 +30,7 @@
 		0DF184032A8CFDFD00E9869B /* FoursquareAPIRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF184022A8CFDFD00E9869B /* FoursquareAPIRoute.swift */; };
 		0DF184062A8CFEF600E9869B /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF184052A8CFEF600E9869B /* APIResponse.swift */; };
 		0DF184082A8CFF0900E9869B /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF184072A8CFF0900E9869B /* Venue.swift */; };
+		0DF1840A2A8CFFB500E9869B /* VenuesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF184092A8CFFB500E9869B /* VenuesInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		0DF184022A8CFDFD00E9869B /* FoursquareAPIRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareAPIRoute.swift; sourceTree = "<group>"; };
 		0DF184052A8CFEF600E9869B /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		0DF184072A8CFF0900E9869B /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		0DF184092A8CFFB500E9869B /* VenuesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF183F02A8CF8E900E9869B /* VenuesViewModel.swift */,
+				0DF184092A8CFFB500E9869B /* VenuesInteractor.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			files = (
 				0DF183DD2A8CF15D00E9869B /* VenuesCoordinator.swift in Sources */,
 				0DF183DB2A8CF13800E9869B /* Coordinator.swift in Sources */,
+				0DF1840A2A8CFFB500E9869B /* VenuesInteractor.swift in Sources */,
 				0DF183F32A8CFAF000E9869B /* Int+Distance.swift in Sources */,
 				0DF183EA2A8CF6A500E9869B /* NibLoadableView.swift in Sources */,
 				0DF183EC2A8CF6C200E9869B /* ReusableView.swift in Sources */,
