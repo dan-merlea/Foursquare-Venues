@@ -33,6 +33,7 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     /// Data
     private let interactor: VenuesInteractor
     private var subscriptions = Set<AnyCancellable>()
+    private var searchSubscription: AnyCancellable?
     
     init(interactor: VenuesInteractor) {
         self.venues = venuesSubject.eraseToAnyPublisher()
@@ -92,14 +93,16 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     }
     
     private func searchForVenues() {
-        interactor.searchForVenues(radius: radiusValueToMeters())
+        searchSubscription?.cancel() /// avoid spamming the API
+        
+        searchSubscription = interactor
+            .searchForVenues(radius: radiusValueToMeters())
             .receive(on: DispatchQueue.main)
             .sink { [weak self] status in
                 self?.requestFinishedWithStatus(status: status)
             } receiveValue: { [weak self] result in
                 self?.venuesSubject.send(result.response.venues)
             }
-            .store(in: &subscriptions)
     }
     
     private func requestFinishedWithStatus(status: Subscribers.Completion<ServerErrorState>) {
