@@ -13,6 +13,8 @@
 		0DF183CB2A8CEF1900E9869B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DF183CA2A8CEF1900E9869B /* Assets.xcassets */; };
 		0DF183CE2A8CEF1900E9869B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF183CC2A8CEF1900E9869B /* LaunchScreen.storyboard */; };
 		0DF183D82A8CF02700E9869B /* VenuesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF183D72A8CF02700E9869B /* VenuesViewController.xib */; };
+		0DF183DB2A8CF13800E9869B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183DA2A8CF13800E9869B /* Coordinator.swift */; };
+		0DF183DD2A8CF15D00E9869B /* VenuesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183DC2A8CF15D00E9869B /* VenuesCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		0DF183CD2A8CEF1900E9869B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DF183CF2A8CEF1900E9869B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DF183D72A8CF02700E9869B /* VenuesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VenuesViewController.xib; sourceTree = "<group>"; };
+		0DF183DA2A8CF13800E9869B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		0DF183DC2A8CF15D00E9869B /* VenuesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +62,7 @@
 			children = (
 				0DF183D62A8CEF7B00E9869B /* Configuration */,
 				0DF183D52A8CEF5200E9869B /* Application */,
-				0DF183C52A8CEF1800E9869B /* VenuesViewController.swift */,
-				0DF183D72A8CF02700E9869B /* VenuesViewController.xib */,
+				0DF183D92A8CF11D00E9869B /* Presentation */,
 			);
 			path = "Foursquare Venues";
 			sourceTree = "<group>";
@@ -81,6 +84,25 @@
 				0DF183CF2A8CEF1900E9869B /* Info.plist */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		0DF183D92A8CF11D00E9869B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				0DF183DE2A8CF19800E9869B /* Coordinator */,
+				0DF183C52A8CEF1800E9869B /* VenuesViewController.swift */,
+				0DF183D72A8CF02700E9869B /* VenuesViewController.xib */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		0DF183DE2A8CF19800E9869B /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0DF183DA2A8CF13800E9869B /* Coordinator.swift */,
+				0DF183DC2A8CF15D00E9869B /* VenuesCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +176,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DF183DD2A8CF15D00E9869B /* VenuesCoordinator.swift in Sources */,
+				0DF183DB2A8CF13800E9869B /* Coordinator.swift in Sources */,
 				0DF183C62A8CEF1800E9869B /* VenuesViewController.swift in Sources */,
 				0DF183C22A8CEF1800E9869B /* AppDelegate.swift in Sources */,
 				0DF183C42A8CEF1800E9869B /* SceneDelegate.swift in Sources */,
