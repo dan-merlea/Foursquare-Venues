@@ -10,8 +10,11 @@ import CoreLocation
 
 protocol VenuesInteractor {
     func askForLocationPermission() -> Future<CLAuthorizationStatus, Never>
-    func searchForVenues(radius: Int) -> AnyPublisher<ApiResponseBody, ServerErrorState>
     func subscribeForLocationChanges() -> AnyPublisher<CLLocation, Never>
+    func searchForVenues(
+        radius: Int,
+        location: CLLocationCoordinate2D
+    ) -> AnyPublisher<ApiResponseBody, ServerErrorState>
 }
 
 final class DefaultVenuesInteractor<PermissionsType: Permissions>: VenuesInteractor
@@ -44,8 +47,8 @@ final class DefaultVenuesInteractor<PermissionsType: Permissions>: VenuesInterac
         return locationService.location
     }
     
-    func searchForVenues(radius: Int) -> AnyPublisher<ApiResponseBody, ServerErrorState> {
-        let route = VenuesSearchRoute(ll: CLLocationCoordinate2D(latitude: 52.3547418, longitude: 4.8215606), radius: radius)
+    func searchForVenues(radius: Int, location: CLLocationCoordinate2D) -> AnyPublisher<ApiResponseBody, ServerErrorState> {
+        let route = VenuesSearchRoute(ll: location, radius: radius)
         return networkService.request(route: route)
     }
 }

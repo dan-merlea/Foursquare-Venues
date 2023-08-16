@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreLocation
 
 protocol VenuesViewModel {
     var venues: AnyPublisher<[Venue], Never> { get }
@@ -86,24 +87,31 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     }
     
     private func subscribeForInputUpdates() {
-        radiusSubject
-            .throttle(for: .milliseconds(500), scheduler: DispatchQueue.main, latest: true)
-            .sink { [weak self] _ in
-                self?.searchForVenues()
-            }
-            .store(in: &subscriptions)
+        Publishers.CombineLatest(
+            interactor.subscribeForLocationChanges(),
+            radiusSubject.throttle(for: .milliseconds(500), scheduler: DispatchQueue.main, latest: true)
+        )
+        .sink { [weak self] location, _ in
+            self?.searchForVenues(location: location.coordinate)
+        }
+        .store(in: &subscriptions)
     }
     
-    private func searchForVenues() {
+    private func searchForVenues(location: CLLocationCoordinate2D) {
         searchSubscription?.cancel() /// avoid spamming the API
         
         searchSubscription = interactor
-            .searchForVenues(radius: radiusValueToMeters())
+            .searchForVenues(radius: radiusValueToMeters(), location: location)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] status in
                 self?.requestFinishedWithStatus(status: status)
             } receiveValue: { [weak self] result in
-                self?.venuesSubject.send(result.response.venues)
+                guard let self = self else { return }
+                
+                /// Adding extra filtering due to api not being confident all the time
+                let venues = result.response.venues
+                    .filter { $0.location.distance <= self.radiusValueToMeters() }
+                self.venuesSubject.send(venues)
             }
     }
     
