@@ -23,9 +23,12 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     
     /// Data
     private let interactor: VenuesInteractor
+    private var subscriptions = Set<AnyCancellable>()
     
     init(interactor: VenuesInteractor) {
         self.interactor = interactor
+        
+        subscribeForInputUpdates()
     }
     
     // MARK: - Public
@@ -54,5 +57,14 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     
     private func radiusValueToMeters() -> Int {
         Int(getCurrentSearchRadius() * 2_000) // 0-2km
+    }
+    
+    private func subscribeForInputUpdates() {
+        radiusSubject
+            .throttle(for: .milliseconds(500), scheduler: DispatchQueue.main, latest: true)
+            .sink { radius in
+                print(radius)
+            }
+            .store(in: &subscriptions)
     }
 }
