@@ -71,6 +71,7 @@ class VenuesViewController: UIViewController, ErrorHandled {
 // MARK: - Actions
 
 extension VenuesViewController {
+    
     @IBAction private func sliderAction(_ sender: UISlider) {
         viewModel.updateSearchRadius(sender.value)
     }
@@ -80,6 +81,7 @@ extension VenuesViewController {
 // MARK: - UITableViewDataSource
 
 extension VenuesViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfVenues()
     }

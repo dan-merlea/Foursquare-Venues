@@ -6,6 +6,7 @@
 //
 
 extension Int {
+    
     func toDistanceString() -> String {
         if self > 1000 {
             return String(format: "%.1f km", Double(self) / 1000)

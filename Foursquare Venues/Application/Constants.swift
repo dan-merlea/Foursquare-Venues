@@ -6,7 +6,7 @@
 //
 
 /**
- Used API v2 with some keys found on Github, could not create a developer account - bug on their side
+ Used API V2 with some keys found on Github as I could not create a developer account - bug on their side
  https://location.foursquare.com/developer/reference/v2-venues-search
  */
 

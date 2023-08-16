@@ -14,6 +14,10 @@ final class VenueTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var distanceLabel: UILabel!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // not in scope: reset downloads & clear images
+    }
     
     func configure(with venue: Venue) {
         titleLabel.text = venue.name

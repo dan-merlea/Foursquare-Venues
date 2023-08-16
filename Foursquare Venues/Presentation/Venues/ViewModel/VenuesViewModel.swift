@@ -121,8 +121,10 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     private func requestFinishedWithStatus(status: Subscribers.Completion<ServerErrorState>) {
         switch status {
         case .failure(let error):
+            
             venuesSubject.send([])
             inputsSubscription?.cancel()
+            
             errorHandled?.handle(error) { [weak self] in
                 guard let self = self else { return }
                 

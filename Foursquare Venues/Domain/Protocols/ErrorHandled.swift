@@ -11,8 +11,8 @@ protocol ErrorHandled: UIViewController {
     func handle(_ error: ServerErrorState, retryBlock: @escaping () -> Void)
 }
 
-
 extension ErrorHandled {
+    
     func handle(_ error: ServerErrorState, retryBlock: @escaping () -> Void) {
         let alert = UIAlertController(
             title: "An error occured",

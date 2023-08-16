@@ -12,6 +12,7 @@ protocol ReusableView: AnyObject {
 }
 
 extension ReusableView where Self: UIView {
+    
     static var defaultReuseIdentifier: String {
         return String(describing: self)
     }

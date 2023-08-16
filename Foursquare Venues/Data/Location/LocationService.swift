@@ -98,7 +98,6 @@ extension DefaultLocationService: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         debugPrint(error)
         // todo: error handling
-        // publish the erorr thorugh locationPublisher
-        // UI: we can turn the navbar red + error until the next successful event
+        // UI: we can turn the navbar red + error message until the next successful event
     }
 }

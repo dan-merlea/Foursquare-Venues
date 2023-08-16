@@ -7,10 +7,10 @@
 
 import Foundation
 
-
 protocol FoursquareAPIRoute: APIRoute {}
 
 extension FoursquareAPIRoute {
+    
     func getQueryItems() -> [URLQueryItem] {
         var queryItems = [
             URLQueryItem(name: "v", value: Constants.Foursquare.version),

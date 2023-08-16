@@ -5,7 +5,6 @@
 //  Created by Dan Merlea on 16.08.2023.
 //
 
-
 enum ServerErrorState: Error {
     case decode(String)
     case invalidURL
