@@ -29,14 +29,14 @@ Open the application, approve the location permission and venues around yourself
 * Xcode Version 14+  Swift 5.6+
 
 ## Next steps
-* Using API V2 ( to upgrade to V3 )
 * Images
 * Sort options
 * Localization
-* Caching - results + location - for fast load
 * Loading states
 * Better error handling
 * Separate class for data source
+* Upgrade to API V3 ( currently using V2 )
+* Caching - results + location - for fast load
 * A slider that grows exponentially ( something like a fibbonaci sequence ) - for accuracy
 * A Dependency Container to pass to next Coordinators
 
