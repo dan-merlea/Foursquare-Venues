@@ -10,6 +10,7 @@ import Combine
 
 protocol VenuesViewModel {
     var venues: AnyPublisher<[Venue], Never> { get }
+    var radius: AnyPublisher<Float, Never> { get }
     
     func getCurrentSearchRadiusText() -> String
     func getCurrentSearchRadius() -> Float
@@ -23,6 +24,7 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     
     /// Public publishers
     let venues: AnyPublisher<[Venue], Never>
+    let radius: AnyPublisher<Float, Never>
     
     /// Subjects
     private var venuesSubject = CurrentValueSubject<[Venue], Never>([])
@@ -34,6 +36,7 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     
     init(interactor: VenuesInteractor) {
         self.venues = venuesSubject.eraseToAnyPublisher()
+        self.radius = radiusSubject.eraseToAnyPublisher()
         self.interactor = interactor
         
         askForLocationPermissionIfNeeded()

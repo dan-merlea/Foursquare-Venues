@@ -49,6 +49,15 @@ class VenuesViewController: UIViewController {
     
     private func subscribeForUpdates() {
         viewModel
+            .radius
+            .receive(on: DispatchQueue.main)
+            .map { [weak self] _ in
+                self?.viewModel.getCurrentSearchRadiusText()
+            }
+            .assign(to: \.text, on: distanceLabel)
+            .store(in: &subscriptions)
+        
+        viewModel
             .venues
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
