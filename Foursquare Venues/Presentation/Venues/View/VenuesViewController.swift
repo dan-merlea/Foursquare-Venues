@@ -13,6 +13,18 @@ class VenuesViewController: UIViewController {
     @IBOutlet private weak var distanceSlider: UISlider!
     @IBOutlet private weak var tableView: UITableView!
     
+    private let viewModel: VenuesViewModel
+    
+    init(viewModel: VenuesViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    /// Maybe moved to a subclass?
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +43,7 @@ class VenuesViewController: UIViewController {
 
 extension VenuesViewController {
     @IBAction private func sliderAction(_ sender: UISlider) {
-        print(sender.value)
+        viewModel.updateSearchRadius(sender.value)
     }
 }
 
@@ -40,12 +52,12 @@ extension VenuesViewController {
 
 extension VenuesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        viewModel.numberOfVenues()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: VenueTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.configure()
+        cell.configure() // todo: configure with model from viewModel
         return cell
     }
 }

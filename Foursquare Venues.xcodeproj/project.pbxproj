@@ -20,6 +20,7 @@
 		0DF183EA2A8CF6A500E9869B /* NibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183E92A8CF6A500E9869B /* NibLoadableView.swift */; };
 		0DF183EC2A8CF6C200E9869B /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183EB2A8CF6C200E9869B /* ReusableView.swift */; };
 		0DF183EF2A8CF70800E9869B /* UITableView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183EE2A8CF70800E9869B /* UITableView+Helpers.swift */; };
+		0DF183F12A8CF8E900E9869B /* VenuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183F02A8CF8E900E9869B /* VenuesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		0DF183E92A8CF6A500E9869B /* NibLoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadableView.swift; sourceTree = "<group>"; };
 		0DF183EB2A8CF6C200E9869B /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		0DF183EE2A8CF70800E9869B /* UITableView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Helpers.swift"; sourceTree = "<group>"; };
+		0DF183F02A8CF8E900E9869B /* VenuesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		0DF183E12A8CF37300E9869B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0DF183F02A8CF8E900E9869B /* VenuesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				0DF183EC2A8CF6C200E9869B /* ReusableView.swift in Sources */,
 				0DF183C62A8CEF1800E9869B /* VenuesViewController.swift in Sources */,
 				0DF183EF2A8CF70800E9869B /* UITableView+Helpers.swift in Sources */,
+				0DF183F12A8CF8E900E9869B /* VenuesViewModel.swift in Sources */,
 				0DF183E42A8CF3A600E9869B /* VenueTableViewCell.swift in Sources */,
 				0DF183C22A8CEF1800E9869B /* AppDelegate.swift in Sources */,
 				0DF183C42A8CEF1800E9869B /* SceneDelegate.swift in Sources */,

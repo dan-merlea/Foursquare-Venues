@@ -17,7 +17,8 @@ final class VenuesCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = VenuesViewController()
+        let viewModel = DefaultVenuesViewModel()
+        let viewController = VenuesViewController(viewModel: viewModel)
         navigationController.viewControllers = [viewController]
     }
     
