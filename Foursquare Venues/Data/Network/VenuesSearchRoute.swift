@@ -12,11 +12,10 @@ struct VenuesSearchRoute: FoursquareAPIRoute {
     let method = RequestMethod.get
     let parameters: [String: LosslessStringConvertible]
     
-    init(ll: CLLocationCoordinate2D, radius: Int, limit: Int) {
+    init(ll: CLLocationCoordinate2D, radius: Int) {
         self.parameters = [
             "radius": radius,
-            "ll": "\(ll.latitude),\(ll.longitude)",
-            "limit": limit
+            "ll": "\(ll.latitude),\(ll.longitude)"
         ]
     }
 }

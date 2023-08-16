@@ -23,7 +23,8 @@ final class VenuesCoordinator: Coordinator {
         let locationPermissions = LocationPermissions(locationService: locationService)
         let interactor = DefaultVenuesInteractor(
             networkService: networkService,
-            locationPermissions: locationPermissions
+            locationPermissions: locationPermissions,
+            locationService: locationService
         )
         let viewModel = DefaultVenuesViewModel(interactor: interactor)
         let viewController = VenuesViewController(viewModel: viewModel)
