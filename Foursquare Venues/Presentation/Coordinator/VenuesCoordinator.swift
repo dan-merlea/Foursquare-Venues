@@ -19,7 +19,8 @@ final class VenuesCoordinator: Coordinator {
     }
     
     func start() {
-        let locationPermissions = LocationPermissions()
+        let locationService = DefaultLocationService()
+        let locationPermissions = LocationPermissions(locationService: locationService)
         let interactor = DefaultVenuesInteractor(
             networkService: networkService,
             locationPermissions: locationPermissions

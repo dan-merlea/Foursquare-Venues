@@ -12,7 +12,7 @@ class LocationPermissions: NSObject, Permissions {
     
     typealias Status = CLAuthorizationStatus
     
-    /// Public publishers
+    /// Publishers
     let status: AnyPublisher<CLAuthorizationStatus, Never>
     
     /// Subjects
@@ -20,10 +20,12 @@ class LocationPermissions: NSObject, Permissions {
     
     /// Data
     private let manager: CLLocationManager
+    private let locationService: LocationService
     private var subscriptions = Set<AnyCancellable>()
     
-    init(manager: CLLocationManager = CLLocationManager()) {
+    init(manager: CLLocationManager = CLLocationManager(), locationService: LocationService) {
         self.manager = manager
+        self.locationService = locationService
         self.statusSubject = CurrentValueSubject<CLAuthorizationStatus, Never>(
             manager.authorizationStatus
         )
@@ -31,6 +33,8 @@ class LocationPermissions: NSObject, Permissions {
         super.init()
         
         self.manager.delegate = self
+        
+        updateLocationServiceWhenReady()
     }
     
     func request() -> Future<CLAuthorizationStatus, Never> {
@@ -42,6 +46,21 @@ class LocationPermissions: NSObject, Permissions {
                 .store(in: &self.subscriptions)
             self.manager.requestWhenInUseAuthorization()
         }
+    }
+    
+    private func updateLocationServiceWhenReady() {
+        status
+            .receive(on: DispatchQueue.main)
+            .removeDuplicates()
+            .sink { [weak self] status in
+                switch status {
+                case .authorizedAlways, .authorizedWhenInUse:
+                    self?.locationService.ready()
+                    break
+                default: ()
+                }
+            }
+            .store(in: &subscriptions)
     }
 }
 

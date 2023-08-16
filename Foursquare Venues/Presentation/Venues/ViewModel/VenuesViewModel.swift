@@ -23,7 +23,7 @@ protocol VenuesViewModel {
 
 final class DefaultVenuesViewModel: VenuesViewModel {
     
-    /// Public publishers
+    /// Publishers
     let venues: AnyPublisher<[Venue], Never>
     let radius: AnyPublisher<Float, Never>
     
