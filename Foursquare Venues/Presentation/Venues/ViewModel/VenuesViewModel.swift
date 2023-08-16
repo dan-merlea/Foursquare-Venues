@@ -16,7 +16,7 @@ protocol VenuesViewModel {
     func updateSearchRadius(_ radius: Float)
     
     func numberOfVenues() -> Int
-    func venueAt(index: Int) -> Any // todo: change with Venue model
+    func venueAt(index: Int) -> Venue
 }
 
 final class DefaultVenuesViewModel: VenuesViewModel {
@@ -54,11 +54,14 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     }
     
     func numberOfVenues() -> Int {
-        return 5
+        return venuesSubject.value.count
     }
     
-    func venueAt(index: Int) -> Any {
-        return NSObject() // todo
+    func venueAt(index: Int) -> Venue {
+        guard index >= 0, index < venuesSubject.value.count else {
+            fatalError("Trying to access a non-existing venue from ViewModel")
+        }
+        return venuesSubject.value[index]
     }
     
     // MARK: - Private

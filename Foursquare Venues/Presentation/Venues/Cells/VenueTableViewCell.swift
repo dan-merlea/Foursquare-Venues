@@ -15,11 +15,11 @@ final class VenueTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     @IBOutlet private weak var distanceLabel: UILabel!
     
     
-    func configure() {
-        titleLabel.text = "Title"
-        categoryLabel.text = "Category"
-        addressLabel.text = "Address"
-        distanceLabel.text = "Distance"
+    func configure(with venue: Venue) {
+        titleLabel.text = venue.name
+        categoryLabel.text = venue.categories.map { $0.name }.joined(separator: "\u{2022}") // bull ascii
+        addressLabel.text = venue.location.address ?? ""
+        distanceLabel.text = venue.location.distance.toDistanceString()
     }
     
 }

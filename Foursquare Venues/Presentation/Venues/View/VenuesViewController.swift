@@ -51,8 +51,8 @@ class VenuesViewController: UIViewController {
         viewModel
             .venues
             .receive(on: DispatchQueue.main)
-            .sink { result in
-                print(result)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
             }
             .store(in: &subscriptions)
     }
@@ -76,7 +76,8 @@ extension VenuesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: VenueTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.configure() // todo: configure with model from viewModel
+        let venue = viewModel.venueAt(index: indexPath.row)
+        cell.configure(with: venue)
         return cell
     }
 }
