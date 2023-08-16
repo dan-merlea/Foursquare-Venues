@@ -23,8 +23,7 @@ class VenuesViewController: UIViewController {
     
     func configureTableView() {
         tableView.dataSource = self
-        let nib = UINib(nibName: String(describing: VenueTableViewCell.self), bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: String(describing: VenueTableViewCell.self))
+        tableView.register(VenueTableViewCell.self)
     }
 }
 
@@ -36,10 +35,8 @@ extension VenuesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: VenueTableViewCell.self), for: indexPath)
-        if let cell = cell as? VenueTableViewCell {
-            cell.configure()
-        }
+        let cell: VenueTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.configure()
         return cell
     }
 }

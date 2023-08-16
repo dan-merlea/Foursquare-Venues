@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class VenueTableViewCell: UITableViewCell {
+final class VenueTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var categoryLabel: UILabel!
