@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import Combine
 
 protocol VenuesViewModel {
+    func getCurrentSearchRadiusText() -> String
+    func getCurrentSearchRadius() -> Float
     func updateSearchRadius(_ radius: Float)
     
     func numberOfVenues() -> Int
@@ -16,9 +19,21 @@ protocol VenuesViewModel {
 
 final class DefaultVenuesViewModel: VenuesViewModel {
     
+    private let radiusSubject = CurrentValueSubject<Float, Never>(0.3)
+    
+    
+    // MARK: - Public
+    
+    func getCurrentSearchRadiusText() -> String {
+        "Radius: \(radiusValueToMeters().toDistanceString())"
+    }
+    
+    func getCurrentSearchRadius() -> Float {
+        radiusSubject.value
+    }
     
     func updateSearchRadius(_ radius: Float) {
-        print(radius)
+        radiusSubject.send(radius)
     }
     
     func numberOfVenues() -> Int {
@@ -27,5 +42,11 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     
     func venueAt(index: Int) -> Any {
         return NSObject() // todo
+    }
+    
+    // MARK: - Private
+    
+    private func radiusValueToMeters() -> Int {
+        Int(getCurrentSearchRadius() * 2_000) // 0-2km
     }
 }

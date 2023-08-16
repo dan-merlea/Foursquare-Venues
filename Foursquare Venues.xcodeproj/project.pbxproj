@@ -21,6 +21,8 @@
 		0DF183EC2A8CF6C200E9869B /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183EB2A8CF6C200E9869B /* ReusableView.swift */; };
 		0DF183EF2A8CF70800E9869B /* UITableView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183EE2A8CF70800E9869B /* UITableView+Helpers.swift */; };
 		0DF183F12A8CF8E900E9869B /* VenuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183F02A8CF8E900E9869B /* VenuesViewModel.swift */; };
+		0DF183F32A8CFAF000E9869B /* Int+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183F22A8CFAF000E9869B /* Int+Distance.swift */; };
+		0DF183F52A8CFB3F00E9869B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183F42A8CFB3F00E9869B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		0DF183EB2A8CF6C200E9869B /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		0DF183EE2A8CF70800E9869B /* UITableView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Helpers.swift"; sourceTree = "<group>"; };
 		0DF183F02A8CF8E900E9869B /* VenuesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesViewModel.swift; sourceTree = "<group>"; };
+		0DF183F22A8CFAF000E9869B /* Int+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Distance.swift"; sourceTree = "<group>"; };
+		0DF183F42A8CFB3F00E9869B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 			children = (
 				0DF183C12A8CEF1800E9869B /* AppDelegate.swift */,
 				0DF183C32A8CEF1800E9869B /* SceneDelegate.swift */,
+				0DF183F42A8CFB3F00E9869B /* Constants.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF183EE2A8CF70800E9869B /* UITableView+Helpers.swift */,
+				0DF183F22A8CFAF000E9869B /* Int+Distance.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -253,6 +259,7 @@
 			files = (
 				0DF183DD2A8CF15D00E9869B /* VenuesCoordinator.swift in Sources */,
 				0DF183DB2A8CF13800E9869B /* Coordinator.swift in Sources */,
+				0DF183F32A8CFAF000E9869B /* Int+Distance.swift in Sources */,
 				0DF183EA2A8CF6A500E9869B /* NibLoadableView.swift in Sources */,
 				0DF183EC2A8CF6C200E9869B /* ReusableView.swift in Sources */,
 				0DF183C62A8CEF1800E9869B /* VenuesViewController.swift in Sources */,
@@ -261,6 +268,7 @@
 				0DF183E42A8CF3A600E9869B /* VenueTableViewCell.swift in Sources */,
 				0DF183C22A8CEF1800E9869B /* AppDelegate.swift in Sources */,
 				0DF183C42A8CEF1800E9869B /* SceneDelegate.swift in Sources */,
+				0DF183F52A8CFB3F00E9869B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

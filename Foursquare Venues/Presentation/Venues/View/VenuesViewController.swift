@@ -31,11 +31,17 @@ class VenuesViewController: UIViewController {
         self.title = "Venues around you" // Localization?
         
         configureTableView()
+        configureDistanceSlider()
     }
     
     func configureTableView() {
         tableView.dataSource = self
         tableView.register(VenueTableViewCell.self)
+    }
+    
+    func configureDistanceSlider() {
+        distanceSlider.value = viewModel.getCurrentSearchRadius()
+        distanceLabel.text = viewModel.getCurrentSearchRadiusText()
     }
 }
 
