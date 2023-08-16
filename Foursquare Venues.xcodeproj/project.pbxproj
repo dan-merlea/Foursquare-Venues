@@ -31,6 +31,7 @@
 		0DF184062A8CFEF600E9869B /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF184052A8CFEF600E9869B /* APIResponse.swift */; };
 		0DF184082A8CFF0900E9869B /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF184072A8CFF0900E9869B /* Venue.swift */; };
 		0DF1840A2A8CFFB500E9869B /* VenuesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF184092A8CFFB500E9869B /* VenuesInteractor.swift */; };
+		0DF1840D2A8D0A0700E9869B /* LocationPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF1840C2A8D0A0700E9869B /* LocationPermissions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		0DF184052A8CFEF600E9869B /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		0DF184072A8CFF0900E9869B /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		0DF184092A8CFFB500E9869B /* VenuesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesInteractor.swift; sourceTree = "<group>"; };
+		0DF1840C2A8D0A0700E9869B /* LocationPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 		0DF183FE2A8CFCEE00E9869B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				0DF1840B2A8D09F800E9869B /* Location */,
 				0DF183FF2A8CFD0500E9869B /* Network */,
 			);
 			path = Data;
@@ -247,6 +250,14 @@
 				0DF184072A8CFF0900E9869B /* Venue.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		0DF1840B2A8D09F800E9869B /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				0DF1840C2A8D0A0700E9869B /* LocationPermissions.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DF1840D2A8D0A0700E9869B /* LocationPermissions.swift in Sources */,
 				0DF183DD2A8CF15D00E9869B /* VenuesCoordinator.swift in Sources */,
 				0DF183DB2A8CF13800E9869B /* Coordinator.swift in Sources */,
 				0DF1840A2A8CFFB500E9869B /* VenuesInteractor.swift in Sources */,

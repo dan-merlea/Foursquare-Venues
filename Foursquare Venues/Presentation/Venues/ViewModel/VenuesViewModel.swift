@@ -37,6 +37,7 @@ final class DefaultVenuesViewModel: VenuesViewModel {
         self.interactor = interactor
         
         subscribeForInputUpdates()
+        askForLocationPermissionIfNeeded()
     }
     
     // MARK: - Public
@@ -68,6 +69,10 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     
     private func radiusValueToMeters() -> Int {
         Int(getCurrentSearchRadius() * 2_000) // 0-2km
+    }
+    
+    private func askForLocationPermissionIfNeeded() {
+        interactor.askForLocationPermission()
     }
     
     private func subscribeForInputUpdates() {

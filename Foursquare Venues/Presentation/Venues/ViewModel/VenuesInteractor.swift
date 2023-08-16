@@ -9,6 +9,7 @@ import Combine
 import CoreLocation
 
 protocol VenuesInteractor {
+    func askForLocationPermission()
     func searchForVenues(radius: Int) -> AnyPublisher<ApiResponseBody, ServerErrorState>
 }
 
@@ -16,9 +17,15 @@ final class DefaultVenuesInteractor: VenuesInteractor {
     
     /// Dependencies
     private let networkService: NetworkService
+    private let locationPermissions: LocationPermissions
     
-    init(networkService: NetworkService) {
+    init(networkService: NetworkService, locationPermissions: LocationPermissions) {
         self.networkService = networkService
+        self.locationPermissions = locationPermissions
+    }
+    
+    func askForLocationPermission() {
+        locationPermissions.request()
     }
     
     func searchForVenues(radius: Int) -> AnyPublisher<ApiResponseBody, ServerErrorState> {

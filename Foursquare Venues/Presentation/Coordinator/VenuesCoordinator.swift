@@ -19,7 +19,11 @@ final class VenuesCoordinator: Coordinator {
     }
     
     func start() {
-        let interactor = DefaultVenuesInteractor(networkService: networkService)
+        let locationPermissions = LocationPermissions()
+        let interactor = DefaultVenuesInteractor(
+            networkService: networkService,
+            locationPermissions: locationPermissions
+        )
         let viewModel = DefaultVenuesViewModel(interactor: interactor)
         let viewController = VenuesViewController(viewModel: viewModel)
         navigationController.viewControllers = [viewController]
