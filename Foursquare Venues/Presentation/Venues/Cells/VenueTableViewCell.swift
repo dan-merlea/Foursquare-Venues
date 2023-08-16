@@ -21,9 +21,8 @@ final class VenueTableViewCell: UITableViewCell, NibLoadableView, ReusableView {
     
     func configure(with venue: Venue) {
         titleLabel.text = venue.name
-        categoryLabel.text = venue.categories.map { $0.name }.joined(separator: "\u{2022}") // bull ascii
+        categoryLabel.text = venue.categories.map { $0.name }.joined(separator: "\u{2022}") // bullet ascii code
         addressLabel.text = venue.location.address ?? ""
         distanceLabel.text = venue.location.distance.toDistanceString()
     }
-    
 }

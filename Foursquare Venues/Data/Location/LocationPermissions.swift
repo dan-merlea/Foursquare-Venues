@@ -56,7 +56,6 @@ class LocationPermissions: NSObject, Permissions {
                 switch status {
                 case .authorizedAlways, .authorizedWhenInUse:
                     self?.locationService.ready()
-                    break
                 default: ()
                 }
             }

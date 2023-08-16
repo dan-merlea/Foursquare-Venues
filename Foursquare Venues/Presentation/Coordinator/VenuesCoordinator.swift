@@ -30,5 +30,4 @@ final class VenuesCoordinator: Coordinator {
         let viewController = VenuesViewController(viewModel: viewModel)
         navigationController.viewControllers = [viewController]
     }
-    
 }

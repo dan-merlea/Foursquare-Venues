@@ -44,7 +44,7 @@ final class DefaultNetworkService: NetworkService {
         guard let urlString = route.getUrl() else {
             return nil
         }
-        print(urlString)
+        
         var request = URLRequest(url: urlString)
         request.httpMethod = route.method.rawValue
         

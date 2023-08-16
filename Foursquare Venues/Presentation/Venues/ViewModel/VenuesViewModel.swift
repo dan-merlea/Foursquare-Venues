@@ -70,6 +70,7 @@ final class DefaultVenuesViewModel: VenuesViewModel {
         guard index >= 0, index < venuesSubject.value.count else {
             fatalError("Trying to access a non-existing venue from ViewModel")
         }
+        
         return venuesSubject.value[index]
     }
     
@@ -99,7 +100,7 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     }
     
     private func searchForVenues(location: CLLocationCoordinate2D) {
-        searchSubscription?.cancel() /// avoid spamming the API
+        searchSubscription?.cancel() /// Avoid spamming the API
         
         lastLocationAvailable = location
         
@@ -111,7 +112,7 @@ final class DefaultVenuesViewModel: VenuesViewModel {
             } receiveValue: { [weak self] result in
                 guard let self = self else { return }
                 
-                /// Adding extra filtering due to api not being confident all the time
+                /// Adding extra filtering due to API not being confident all the time
                 let venues = result.response.venues
                     .filter { $0.location.distance <= self.radiusValueToMeters() }
                 self.venuesSubject.send(venues)

@@ -61,6 +61,7 @@ class DefaultLocationService: NSObject, LocationService {
         guard stateSubject.value != .ready else {
             return
         }
+        
         stateSubject.send(.ready)
     }
 

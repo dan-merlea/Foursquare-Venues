@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  VenuesViewController.swift
 //  Foursquare Venues
 //
 //  Created by Dan Merlea on 16.08.2023.
@@ -22,7 +22,7 @@ class VenuesViewController: UIViewController, ErrorHandled {
         super.init(nibName: nil, bundle: nil)
     }
     
-    /// Maybe moved to a subclass?
+    /// Maybe moved to a superclass?
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -30,7 +30,7 @@ class VenuesViewController: UIViewController, ErrorHandled {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Venues around you" // Localization?
+        title = "Venues around you" // Localization?
         viewModel.errorHandled = self
         
         configureTableView()
@@ -88,8 +88,10 @@ extension VenuesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: VenueTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        
         let venue = viewModel.venueAt(index: indexPath.row)
         cell.configure(with: venue)
+        
         return cell
     }
 }

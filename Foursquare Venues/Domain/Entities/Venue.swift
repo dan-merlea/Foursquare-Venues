@@ -1,5 +1,5 @@
 //
-//  Venues.swift
+//  Venue.swift
 //  Foursquare Venues
 //
 //  Created by Dan Merlea on 16.08.2023.

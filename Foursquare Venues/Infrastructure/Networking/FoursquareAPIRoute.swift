@@ -18,9 +18,11 @@ extension FoursquareAPIRoute {
             URLQueryItem(name: "client_secret", value: Constants.Foursquare.clientSecret),
             URLQueryItem(name: "limit", value: String(Constants.Foursquare.pageSize))
         ]
+        
         parameters.forEach {
             queryItems.append(URLQueryItem(name: $0, value: String($1)))
         }
+        
         return queryItems
     }
 }
