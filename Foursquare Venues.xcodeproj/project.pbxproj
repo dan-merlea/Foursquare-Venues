@@ -33,6 +33,7 @@
 		0DF1840A2A8CFFB500E9869B /* VenuesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF184092A8CFFB500E9869B /* VenuesInteractor.swift */; };
 		0DF1840D2A8D0A0700E9869B /* LocationPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF1840C2A8D0A0700E9869B /* LocationPermissions.swift */; };
 		0DF1840F2A8D0D4200E9869B /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF1840E2A8D0D4200E9869B /* Permissions.swift */; };
+		0DF184112A8D117000E9869B /* ErrorHandled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF184102A8D117000E9869B /* ErrorHandled.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		0DF184092A8CFFB500E9869B /* VenuesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesInteractor.swift; sourceTree = "<group>"; };
 		0DF1840C2A8D0A0700E9869B /* LocationPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissions.swift; sourceTree = "<group>"; };
 		0DF1840E2A8D0D4200E9869B /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		0DF184102A8D117000E9869B /* ErrorHandled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandled.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				0DF183E92A8CF6A500E9869B /* NibLoadableView.swift */,
 				0DF183EB2A8CF6C200E9869B /* ReusableView.swift */,
 				0DF1840E2A8D0D4200E9869B /* Permissions.swift */,
+				0DF184102A8D117000E9869B /* ErrorHandled.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				0DF184082A8CFF0900E9869B /* Venue.swift in Sources */,
 				0DF184012A8CFD2400E9869B /* VenuesSearchRoute.swift in Sources */,
 				0DF183F92A8CFC3900E9869B /* NetworkService.swift in Sources */,
+				0DF184112A8D117000E9869B /* ErrorHandled.swift in Sources */,
 				0DF183F52A8CFB3F00E9869B /* Constants.swift in Sources */,
 				0DF1840F2A8D0D4200E9869B /* Permissions.swift in Sources */,
 				0DF184062A8CFEF600E9869B /* APIResponse.swift in Sources */,

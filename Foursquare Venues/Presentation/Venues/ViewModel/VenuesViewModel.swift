@@ -11,6 +11,7 @@ import Combine
 protocol VenuesViewModel {
     var venues: AnyPublisher<[Venue], Never> { get }
     var radius: AnyPublisher<Float, Never> { get }
+    var errorHandled: ErrorHandled? { get set }
     
     func getCurrentSearchRadiusText() -> String
     func getCurrentSearchRadius() -> Float
@@ -31,6 +32,7 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     private let radiusSubject = CurrentValueSubject<Float, Never>(0.3)
     
     /// Data
+    weak var errorHandled: ErrorHandled?
     private let interactor: VenuesInteractor
     private var subscriptions = Set<AnyCancellable>()
     private var searchSubscription: AnyCancellable?
@@ -108,7 +110,10 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     private func requestFinishedWithStatus(status: Subscribers.Completion<ServerErrorState>) {
         switch status {
         case .failure(let error):
-            print(error)
+            venuesSubject.send([])
+            errorHandled?.handle(error) { [weak self] in
+                // todo
+            }
         default: ()
         }
     }

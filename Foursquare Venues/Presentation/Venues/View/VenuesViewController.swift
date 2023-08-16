@@ -8,13 +8,13 @@
 import UIKit
 import Combine
 
-class VenuesViewController: UIViewController {
+class VenuesViewController: UIViewController, ErrorHandled {
     
     @IBOutlet private weak var distanceLabel: UILabel!
     @IBOutlet private weak var distanceSlider: UISlider!
     @IBOutlet private weak var tableView: UITableView!
     
-    private let viewModel: VenuesViewModel
+    private var viewModel: VenuesViewModel
     private var subscriptions = Set<AnyCancellable>()
     
     init(viewModel: VenuesViewModel) {
@@ -31,6 +31,7 @@ class VenuesViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Venues around you" // Localization?
+        viewModel.errorHandled = self
         
         configureTableView()
         configureDistanceSlider()
