@@ -13,16 +13,17 @@ protocol VenuesInteractor {
     func searchForVenues(radius: Int) -> AnyPublisher<ApiResponseBody, ServerErrorState>
 }
 
-final class DefaultVenuesInteractor: VenuesInteractor {
+final class DefaultVenuesInteractor<PermissionsType: Permissions>: VenuesInteractor
+    where PermissionsType.Status == CLAuthorizationStatus {
     
     /// Dependencies
     private let networkService: NetworkService
-    private let locationPermissions: LocationPermissions
+    private let locationPermissions: PermissionsType
     
     /// Data
     private var subscriptions = Set<AnyCancellable>()
     
-    init(networkService: NetworkService, locationPermissions: LocationPermissions) {
+    init(networkService: NetworkService, locationPermissions: PermissionsType) {
         self.networkService = networkService
         self.locationPermissions = locationPermissions
     }

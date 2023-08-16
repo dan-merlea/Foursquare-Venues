@@ -8,7 +8,9 @@
 import Combine
 import CoreLocation
 
-class LocationPermissions: NSObject {
+class LocationPermissions: NSObject, Permissions {
+    
+    typealias Status = CLAuthorizationStatus
     
     /// Public publishers
     let status: AnyPublisher<CLAuthorizationStatus, Never>
