@@ -36,7 +36,6 @@ final class DefaultVenuesViewModel: VenuesViewModel {
         self.venues = venuesSubject.eraseToAnyPublisher()
         self.interactor = interactor
         
-        subscribeForInputUpdates()
         askForLocationPermissionIfNeeded()
     }
     
@@ -72,7 +71,12 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     }
     
     private func askForLocationPermissionIfNeeded() {
-        interactor.askForLocationPermission()
+        interactor
+            .askForLocationPermission()
+            .sink { [weak self] status in
+                self?.subscribeForInputUpdates()
+            }
+            .store(in: &subscriptions)
     }
     
     private func subscribeForInputUpdates() {

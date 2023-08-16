@@ -9,7 +9,7 @@ import Combine
 import CoreLocation
 
 protocol VenuesInteractor {
-    func askForLocationPermission()
+    func askForLocationPermission() -> Future<CLAuthorizationStatus, Never>
     func searchForVenues(radius: Int) -> AnyPublisher<ApiResponseBody, ServerErrorState>
 }
 
@@ -19,13 +19,23 @@ final class DefaultVenuesInteractor: VenuesInteractor {
     private let networkService: NetworkService
     private let locationPermissions: LocationPermissions
     
+    /// Data
+    private var subscriptions = Set<AnyCancellable>()
+    
     init(networkService: NetworkService, locationPermissions: LocationPermissions) {
         self.networkService = networkService
         self.locationPermissions = locationPermissions
     }
     
-    func askForLocationPermission() {
-        locationPermissions.request()
+    func askForLocationPermission() -> Future<CLAuthorizationStatus, Never> {
+        Future { [weak self] promise in
+            guard let self = self else { return }
+
+            self.locationPermissions.status
+                .sink { promise(.success($0)) }
+                .store(in: &self.subscriptions)
+            self.locationPermissions.request()
+        }
     }
     
     func searchForVenues(radius: Int) -> AnyPublisher<ApiResponseBody, ServerErrorState> {
