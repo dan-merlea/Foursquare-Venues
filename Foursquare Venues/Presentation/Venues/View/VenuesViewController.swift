@@ -50,7 +50,7 @@ class VenuesViewController: UIViewController, ErrorHandled {
     
     private func subscribeForUpdates() {
         viewModel
-            .radius
+            .radiusPublisher
             .receive(on: DispatchQueue.main)
             .map { [weak self] _ in
                 self?.viewModel.getCurrentSearchRadiusText()

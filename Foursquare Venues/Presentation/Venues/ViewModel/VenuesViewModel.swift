@@ -11,7 +11,7 @@ import CoreLocation
 
 protocol VenuesViewModel {
     var venues: AnyPublisher<[Venue], Never> { get }
-    var radius: AnyPublisher<Float, Never> { get }
+    var radiusPublisher: Published<Float>.Publisher { get }
     var errorHandled: ErrorHandled? { get set }
     
     func getCurrentSearchRadiusText() -> String
@@ -26,11 +26,11 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     
     /// Publishers
     let venues: AnyPublisher<[Venue], Never>
-    let radius: AnyPublisher<Float, Never>
+    @Published private(set) var radius: Float
     
     /// Subjects
     private var venuesSubject = CurrentValueSubject<[Venue], Never>([])
-    private let radiusSubject = CurrentValueSubject<Float, Never>(0.3)
+    internal var radiusPublisher: Published<Float>.Publisher { $radius }
     
     /// Data
     weak var errorHandled: ErrorHandled?
@@ -42,7 +42,7 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     
     init(interactor: VenuesInteractor) {
         self.venues = venuesSubject.eraseToAnyPublisher()
-        self.radius = radiusSubject.eraseToAnyPublisher()
+        self.radius = 0.3
         self.interactor = interactor
         
         askForLocationPermissionIfNeeded()
@@ -55,11 +55,11 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     }
     
     func getCurrentSearchRadius() -> Float {
-        radiusSubject.value
+        radius
     }
     
     func updateSearchRadius(_ radius: Float) {
-        radiusSubject.send(radius)
+        self.radius = radius
     }
     
     func numberOfVenues() -> Int {
@@ -77,7 +77,7 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     // MARK: - Private
     
     private func radiusValueToMeters() -> Int {
-        Int(getCurrentSearchRadius() * 2_000) // 0-2km
+        Int(radius * 2_000) // 0-2km
     }
     
     private func askForLocationPermissionIfNeeded() {
@@ -92,8 +92,9 @@ final class DefaultVenuesViewModel: VenuesViewModel {
     private func subscribeForInputUpdates() {
         inputsSubscription = Publishers.CombineLatest(
             interactor.subscribeForLocationChanges(),
-            radiusSubject.throttle(for: .milliseconds(500), scheduler: DispatchQueue.main, latest: true)
+            $radius
         )
+        .throttle(for: .milliseconds(500), scheduler: DispatchQueue.main, latest: true)
         .sink { [weak self] location, _ in
             self?.searchForVenues(location: location.coordinate)
         }
