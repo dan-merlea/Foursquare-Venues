@@ -110,15 +110,13 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
         let route = VenuesSearchRoute(ll: location, radius: radiusValueToMeters())
         searchSubscription = networkService.request(route: route)
             .receive(on: DispatchQueue.main)
+            .map { $0.response.venues.filter {
+                $0.location.distance <= self.radiusValueToMeters()
+            }}
             .sink { [weak self] status in
                 self?.requestFinishedWithStatus(status: status)
-            } receiveValue: { [weak self] result in
-                guard let self = self else { return }
-                
-                /// Adding extra filtering due to API not being confident all the time
-                let venues = result.response.venues
-                    .filter { $0.location.distance <= self.radiusValueToMeters() }
-                self.venues = venues
+            } receiveValue: { [weak self] venues in
+                self?.venues = venues
             }
     }
     
