@@ -18,7 +18,7 @@ enum ServiceState {
 protocol LocationService: AnyObject {
     
     var state: AnyPublisher<ServiceState, Never> { get }
-    var location: AnyPublisher<CLLocation, Never> { get }
+    var location: AnyPublisher<CLLocation?, Never> { get }
     
     func ready()
     func start()
@@ -29,10 +29,10 @@ class DefaultLocationService: NSObject, LocationService {
     
     /// Publishers
     let state: AnyPublisher<ServiceState, Never>
-    let location: AnyPublisher<CLLocation, Never>
+    let location: AnyPublisher<CLLocation?, Never>
     
     /// Subjects
-    private let locationSubject = PassthroughSubject<CLLocation, Never>()
+    private let locationSubject = PassthroughSubject<CLLocation?, Never>()
     private let stateSubject = CurrentValueSubject<ServiceState, Never>(.idle)
     
     /// Data
@@ -97,8 +97,6 @@ extension DefaultLocationService: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        debugPrint(error)
-        // todo: error handling
-        // UI: we can turn the navbar red + error message until the next successful event
+        locationSubject.send(nil)
     }
 }

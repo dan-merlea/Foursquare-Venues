@@ -8,6 +8,8 @@
 import CoreLocation
 
 struct VenuesSearchRoute: FoursquareAPIRoute {
+    typealias Response = ApiResponseBody
+    
     let path = "/v2/venues/search"
     let method = RequestMethod.get
     let parameters: [String: LosslessStringConvertible]

@@ -13,6 +13,8 @@ enum RequestMethod: String {
 }
 
 protocol APIRoute {
+    associatedtype Response: Decodable
+    
     var path: String { get }
     var parameters: [String: LosslessStringConvertible] { get }
     var body: Encodable? { get }

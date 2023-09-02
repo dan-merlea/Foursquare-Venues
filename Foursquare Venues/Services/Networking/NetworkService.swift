@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol NetworkService {
-    func request<T>(route: APIRoute) -> AnyPublisher<T, ServerErrorState> where T: Codable
+    func request<T: APIRoute>(route: T) -> AnyPublisher<T.Response, ServerErrorState> where T.Response: Decodable
 }
 
 final class DefaultNetworkService: NetworkService {
@@ -20,7 +20,7 @@ final class DefaultNetworkService: NetworkService {
         self.session = session
     }
     
-    func request<T>(route: APIRoute) -> AnyPublisher<T, ServerErrorState> where T: Codable {
+    func request<T: APIRoute>(route: T) -> AnyPublisher<T.Response, ServerErrorState> where T.Response: Decodable {
         guard let request = getUrlRequest(route: route) else {
             return Fail(error: .invalidURL).eraseToAnyPublisher()
         }
@@ -32,7 +32,7 @@ final class DefaultNetworkService: NetworkService {
                 }
                 return output.data
             }
-            .decode(type: T.self, decoder: JSONDecoder())
+            .decode(type: T.Response.self, decoder: JSONDecoder())
             .mapError { error in
                 ServerErrorState.decode(error.localizedDescription)
             }
@@ -40,7 +40,7 @@ final class DefaultNetworkService: NetworkService {
     }
     
     /// Create URL request
-    private func getUrlRequest(route: APIRoute) -> URLRequest? {
+    private func getUrlRequest<T: APIRoute>(route: T) -> URLRequest? {
         guard let urlString = route.getUrl() else {
             return nil
         }

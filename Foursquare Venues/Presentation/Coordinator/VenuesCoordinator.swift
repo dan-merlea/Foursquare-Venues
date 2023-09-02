@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class VenuesCoordinator: Coordinator {
     
@@ -21,13 +22,13 @@ final class VenuesCoordinator: Coordinator {
     func start() {
         let locationService = DefaultLocationService()
         let locationPermissions = LocationPermissions(locationService: locationService)
-        let interactor = DefaultVenuesInteractor(
+        let viewModel = DefaultVenuesViewModel(
             networkService: networkService,
             locationPermissions: locationPermissions,
             locationService: locationService
         )
-        let viewModel = DefaultVenuesViewModel(interactor: interactor)
-        let viewController = VenuesViewController(viewModel: viewModel)
-        navigationController.viewControllers = [viewController]
+        let view = VenuesView(viewModel: viewModel)
+        let hostViewController = UIHostingController(rootView: view)
+        navigationController.viewControllers = [hostViewController]
     }
 }

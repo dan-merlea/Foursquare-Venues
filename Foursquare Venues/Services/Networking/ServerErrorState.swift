@@ -5,7 +5,7 @@
 //  Created by Dan Merlea on 16.08.2023.
 //
 
-enum ServerErrorState: Error {
+enum ServerErrorState: Error, Hashable, Identifiable {
     case decode(String)
     case invalidURL
     case serverError
@@ -19,5 +19,9 @@ enum ServerErrorState: Error {
         case .serverError:
             return "Server error"
         }
+    }
+    
+    var id: Self {
+        return self
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Dan Merlea on 16.08.2023.
 //
 
-struct Venue: Codable {
+struct Venue: Codable, Identifiable {
     let id: String
     let name: String
     let location: VenueLocation
