@@ -1,7 +1,8 @@
 
 # Foursquare search
 
-iOS Project implemented with Clean Layered Architecture and VIPER to search for a few venues around your current location with a radius filter.
+Template iOS Project implemented with Clean Layered Architecture and MVVM-C.
+The application searches for venues around your current location with a radius filter.
 
 ## Layers
 * **Domain Layer** = Entities + Extensions + Interfaces ( Protocols )
