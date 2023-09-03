@@ -10,25 +10,18 @@ import SwiftUI
 
 final class VenuesCoordinator: Coordinator {
     
-    let networkService = DefaultNetworkService()
-    
     var childCoordinators: [Coordinator] = []
-    var navigationController: UINavigationController
+    let navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    private let appDIContainer: AppDIContainer
+    
+    init(navigationController: UINavigationController, appDIContainer: AppDIContainer) {
         self.navigationController = navigationController
+        self.appDIContainer = appDIContainer
     }
     
     func start() {
-        let locationService = DefaultLocationService()
-        let locationPermissions = LocationPermissions(locationService: locationService)
-        let viewModel = DefaultVenuesViewModel(
-            networkService: networkService,
-            locationPermissions: locationPermissions,
-            locationService: locationService
-        )
-        let view = VenuesView(viewModel: viewModel)
-        let hostViewController = UIHostingController(rootView: view)
-        navigationController.viewControllers = [hostViewController]
+        let builder = VenuesViewBuilder()
+        navigationController.viewControllers = [builder.build(resolver: appDIContainer)]
     }
 }

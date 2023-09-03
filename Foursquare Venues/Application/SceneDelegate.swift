@@ -20,11 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         
         let navigationController = UINavigationController()
+        let appDIContainer = AppDIContainer()
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
-        coordinator = VenuesCoordinator(navigationController: navigationController)
+        coordinator = VenuesCoordinator(navigationController: navigationController, appDIContainer: appDIContainer)
         coordinator?.start()
     }
 }
