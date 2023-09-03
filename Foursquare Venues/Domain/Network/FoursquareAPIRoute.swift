@@ -11,7 +11,7 @@ protocol FoursquareAPIRoute: APIRoute {}
 
 extension FoursquareAPIRoute {
     
-    func getQueryItems() -> [URLQueryItem] {
+    func queryItems() -> [URLQueryItem] {
         var queryItems = [
             URLQueryItem(name: "v", value: Constants.Foursquare.version),
             URLQueryItem(name: "client_id", value: Constants.Foursquare.clientId),

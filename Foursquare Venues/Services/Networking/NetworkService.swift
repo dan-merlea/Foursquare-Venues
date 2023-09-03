@@ -41,7 +41,7 @@ final class DefaultNetworkService: NetworkService {
     
     /// Create URL request
     private func getUrlRequest<T: APIRoute>(route: T) -> URLRequest? {
-        guard let urlString = route.getUrl() else {
+        guard let urlString = route.url() else {
             return nil
         }
         

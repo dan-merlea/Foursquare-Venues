@@ -20,7 +20,8 @@ protocol APIRoute {
     var body: Encodable? { get }
     var method: RequestMethod { get }
     
-    func getQueryItems() -> [URLQueryItem]
+    func url() -> URL?
+    func queryItems() -> [URLQueryItem]
 }
 
 extension APIRoute {
@@ -30,13 +31,13 @@ extension APIRoute {
     }
     
     /// Build URL
-    func getUrl() -> URL? {
+    func url() -> URL? {
         var component = URLComponents()
         component.scheme = "https"
         component.host = Constants.Foursquare.api
         component.path = path
         if method == .get {
-            component.queryItems = getQueryItems()
+            component.queryItems = queryItems()
         }
         return component.url
     }
