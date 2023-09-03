@@ -25,4 +25,11 @@ struct Constants {
         @SecuredConfig("ClientSecret")
         static var clientSecret: String
     }
+    
+    struct VenuesSearch {
+        static let radiusSearch: Float = 0.3
+        static let radiusRange: Float = 2_000
+        static let searchGpsTitle = "Searching for GPS"
+        static let venuesTitle = "Searching for GPS"
+    }
 }

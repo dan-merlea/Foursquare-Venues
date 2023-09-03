@@ -10,6 +10,16 @@
 		0D766D7C2AA3925500B9BB82 /* VenuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766D7B2AA3925500B9BB82 /* VenuesView.swift */; };
 		0D766D7E2AA39D3600B9BB82 /* VenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766D7D2AA39D3600B9BB82 /* VenueView.swift */; };
 		0D766D802AA3A81800B9BB82 /* VenueListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766D7F2AA3A81800B9BB82 /* VenueListView.swift */; };
+		0D766D8A2AA3B89200B9BB82 /* VenuesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766D892AA3B89200B9BB82 /* VenuesViewModelTests.swift */; };
+		0D766D922AA3B8DA00B9BB82 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766D912AA3B8DA00B9BB82 /* AppDIContainer.swift */; };
+		0D766D952AA4632600B9BB82 /* VenuesViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766D942AA4632600B9BB82 /* VenuesViewBuilder.swift */; };
+		0D766D982AA4634000B9BB82 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766D972AA4634000B9BB82 /* ViewBuilder.swift */; };
+		0D766D9B2AA4691A00B9BB82 /* ApiConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D766D9A2AA4691A00B9BB82 /* ApiConfig.plist */; };
+		0D766D9E2AA46D5200B9BB82 /* SecuredConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766D9D2AA46D5200B9BB82 /* SecuredConfig.swift */; };
+		0D766DA02AA4703C00B9BB82 /* NetworkServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766D9F2AA4703C00B9BB82 /* NetworkServiceMock.swift */; };
+		0D766DA22AA4716E00B9BB82 /* LocationPermissionsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766DA12AA4716E00B9BB82 /* LocationPermissionsMock.swift */; };
+		0D766DA42AA4731100B9BB82 /* LocationServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766DA32AA4731100B9BB82 /* LocationServiceMock.swift */; };
+		0D766DA92AA493D800B9BB82 /* CLLocation+Param.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D766DA82AA493D800B9BB82 /* CLLocation+Param.swift */; };
 		0DF183C22A8CEF1800E9869B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183C12A8CEF1800E9869B /* AppDelegate.swift */; };
 		0DF183C42A8CEF1800E9869B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF183C32A8CEF1800E9869B /* SceneDelegate.swift */; };
 		0DF183CB2A8CEF1900E9869B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DF183CA2A8CEF1900E9869B /* Assets.xcassets */; };
@@ -31,11 +41,33 @@
 		0DF184132A8D176500E9869B /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF184122A8D176500E9869B /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0D766D8B2AA3B89200B9BB82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0DF183B62A8CEF1800E9869B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0DF183BD2A8CEF1800E9869B;
+			remoteInfo = "Foursquare Venues";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0D766D7B2AA3925500B9BB82 /* VenuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesView.swift; sourceTree = "<group>"; };
 		0D766D7D2AA39D3600B9BB82 /* VenueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueView.swift; sourceTree = "<group>"; };
 		0D766D7F2AA3A81800B9BB82 /* VenueListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueListView.swift; sourceTree = "<group>"; };
-		0DF183BE2A8CEF1800E9869B /* Foursquare Venues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Foursquare Venues.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D766D872AA3B89200B9BB82 /* FoursquareVenuesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoursquareVenuesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D766D892AA3B89200B9BB82 /* VenuesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesViewModelTests.swift; sourceTree = "<group>"; };
+		0D766D912AA3B8DA00B9BB82 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		0D766D942AA4632600B9BB82 /* VenuesViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesViewBuilder.swift; sourceTree = "<group>"; };
+		0D766D972AA4634000B9BB82 /* ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
+		0D766D9A2AA4691A00B9BB82 /* ApiConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiConfig.plist; sourceTree = "<group>"; };
+		0D766D9D2AA46D5200B9BB82 /* SecuredConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuredConfig.swift; sourceTree = "<group>"; };
+		0D766D9F2AA4703C00B9BB82 /* NetworkServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceMock.swift; sourceTree = "<group>"; };
+		0D766DA12AA4716E00B9BB82 /* LocationPermissionsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionsMock.swift; sourceTree = "<group>"; };
+		0D766DA32AA4731100B9BB82 /* LocationServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceMock.swift; sourceTree = "<group>"; };
+		0D766DA52AA48ED600B9BB82 /* Foursquare Venues.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Foursquare Venues.xctestplan"; sourceTree = "<group>"; };
+		0D766DA82AA493D800B9BB82 /* CLLocation+Param.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Param.swift"; sourceTree = "<group>"; };
+		0DF183BE2A8CEF1800E9869B /* FoursquareVenues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoursquareVenues.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF183C12A8CEF1800E9869B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DF183C32A8CEF1800E9869B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0DF183CA2A8CEF1900E9869B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,6 +91,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0D766D842AA3B89200B9BB82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0DF183BB2A8CEF1800E9869B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -69,10 +108,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D766D882AA3B89200B9BB82 /* FoursquareVenuesTests */ = {
+			isa = PBXGroup;
+			children = (
+				0D766DA52AA48ED600B9BB82 /* Foursquare Venues.xctestplan */,
+				0D766D902AA3B8AC00B9BB82 /* Mocks */,
+				0D766D892AA3B89200B9BB82 /* VenuesViewModelTests.swift */,
+			);
+			path = FoursquareVenuesTests;
+			sourceTree = "<group>";
+		};
+		0D766D902AA3B8AC00B9BB82 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				0D766D9F2AA4703C00B9BB82 /* NetworkServiceMock.swift */,
+				0D766DA12AA4716E00B9BB82 /* LocationPermissionsMock.swift */,
+				0D766DA32AA4731100B9BB82 /* LocationServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		0D766D932AA4630E00B9BB82 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				0D766D942AA4632600B9BB82 /* VenuesViewBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		0D766D9C2AA46D3D00B9BB82 /* PropertyWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				0D766D9D2AA46D5200B9BB82 /* SecuredConfig.swift */,
+			);
+			path = PropertyWrappers;
+			sourceTree = "<group>";
+		};
 		0DF183B52A8CEF1800E9869B = {
 			isa = PBXGroup;
 			children = (
 				0DF183C02A8CEF1800E9869B /* Foursquare Venues */,
+				0D766D882AA3B89200B9BB82 /* FoursquareVenuesTests */,
 				0DF183BF2A8CEF1800E9869B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,7 +156,8 @@
 		0DF183BF2A8CEF1800E9869B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0DF183BE2A8CEF1800E9869B /* Foursquare Venues.app */,
+				0DF183BE2A8CEF1800E9869B /* FoursquareVenues.app */,
+				0D766D872AA3B89200B9BB82 /* FoursquareVenuesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +180,7 @@
 				0DF183C12A8CEF1800E9869B /* AppDelegate.swift */,
 				0DF183C32A8CEF1800E9869B /* SceneDelegate.swift */,
 				0DF183F42A8CFB3F00E9869B /* Constants.swift */,
+				0D766D912AA3B8DA00B9BB82 /* AppDIContainer.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -113,6 +191,7 @@
 				0DF183CA2A8CEF1900E9869B /* Assets.xcassets */,
 				0DF183CC2A8CEF1900E9869B /* LaunchScreen.storyboard */,
 				0DF183CF2A8CEF1900E9869B /* Info.plist */,
+				0D766D9A2AA4691A00B9BB82 /* ApiConfig.plist */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -120,7 +199,6 @@
 		0DF183D92A8CF11D00E9869B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				0DF183DE2A8CF19800E9869B /* Coordinator */,
 				0DF183DF2A8CF35500E9869B /* Venues */,
 			);
 			path = Presentation;
@@ -129,7 +207,6 @@
 		0DF183DE2A8CF19800E9869B /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				0DF183DA2A8CF13800E9869B /* Coordinator.swift */,
 				0DF183DC2A8CF15D00E9869B /* VenuesCoordinator.swift */,
 			);
 			path = Coordinator;
@@ -138,6 +215,8 @@
 		0DF183DF2A8CF35500E9869B /* Venues */ = {
 			isa = PBXGroup;
 			children = (
+				0DF183DE2A8CF19800E9869B /* Coordinator */,
+				0D766D932AA4630E00B9BB82 /* Builder */,
 				0DF183E22A8CF38E00E9869B /* Views */,
 				0D766D7B2AA3925500B9BB82 /* VenuesView.swift */,
 				0DF183F02A8CF8E900E9869B /* VenuesViewModel.swift */,
@@ -157,6 +236,7 @@
 		0DF183E72A8CF52C00E9869B /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				0D766D9C2AA46D3D00B9BB82 /* PropertyWrappers */,
 				0DF183FF2A8CFD0500E9869B /* Network */,
 				0DF184042A8CFEC700E9869B /* Entities */,
 				0DF183ED2A8CF6E100E9869B /* Extensions */,
@@ -168,7 +248,9 @@
 		0DF183E82A8CF53800E9869B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				0DF183DA2A8CF13800E9869B /* Coordinator.swift */,
 				0DF1840E2A8D0D4200E9869B /* Permissions.swift */,
+				0D766D972AA4634000B9BB82 /* ViewBuilder.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -177,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF183F22A8CFAF000E9869B /* Int+Distance.swift */,
+				0D766DA82AA493D800B9BB82 /* CLLocation+Param.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -196,7 +279,6 @@
 				0DF183F82A8CFC3900E9869B /* NetworkService.swift */,
 				0DF183FC2A8CFC8700E9869B /* ServerErrorState.swift */,
 				0DF183FA2A8CFC6100E9869B /* APIRoute.swift */,
-				0DF184022A8CFDFD00E9869B /* FoursquareAPIRoute.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -204,6 +286,7 @@
 		0DF183FF2A8CFD0500E9869B /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				0DF184022A8CFDFD00E9869B /* FoursquareAPIRoute.swift */,
 				0DF184002A8CFD2400E9869B /* VenuesSearchRoute.swift */,
 			);
 			path = Network;
@@ -230,9 +313,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0DF183BD2A8CEF1800E9869B /* Foursquare Venues */ = {
+		0D766D862AA3B89200B9BB82 /* FoursquareVenuesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0DF183D22A8CEF1900E9869B /* Build configuration list for PBXNativeTarget "Foursquare Venues" */;
+			buildConfigurationList = 0D766D8D2AA3B89200B9BB82 /* Build configuration list for PBXNativeTarget "FoursquareVenuesTests" */;
+			buildPhases = (
+				0D766D832AA3B89200B9BB82 /* Sources */,
+				0D766D842AA3B89200B9BB82 /* Frameworks */,
+				0D766D852AA3B89200B9BB82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0D766D8C2AA3B89200B9BB82 /* PBXTargetDependency */,
+			);
+			name = FoursquareVenuesTests;
+			productName = FoursquareVenuesTests;
+			productReference = 0D766D872AA3B89200B9BB82 /* FoursquareVenuesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0DF183BD2A8CEF1800E9869B /* FoursquareVenues */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0DF183D22A8CEF1900E9869B /* Build configuration list for PBXNativeTarget "FoursquareVenues" */;
 			buildPhases = (
 				0DF183BA2A8CEF1800E9869B /* Sources */,
 				0DF183BB2A8CEF1800E9869B /* Frameworks */,
@@ -242,9 +343,9 @@
 			);
 			dependencies = (
 			);
-			name = "Foursquare Venues";
+			name = FoursquareVenues;
 			productName = "Foursquare Venues";
-			productReference = 0DF183BE2A8CEF1800E9869B /* Foursquare Venues.app */;
+			productReference = 0DF183BE2A8CEF1800E9869B /* FoursquareVenues.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -257,6 +358,10 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					0D766D862AA3B89200B9BB82 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 0DF183BD2A8CEF1800E9869B;
+					};
 					0DF183BD2A8CEF1800E9869B = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -275,28 +380,49 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0DF183BD2A8CEF1800E9869B /* Foursquare Venues */,
+				0DF183BD2A8CEF1800E9869B /* FoursquareVenues */,
+				0D766D862AA3B89200B9BB82 /* FoursquareVenuesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0D766D852AA3B89200B9BB82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0DF183BC2A8CEF1800E9869B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0DF183CE2A8CEF1900E9869B /* LaunchScreen.storyboard in Resources */,
 				0DF183CB2A8CEF1900E9869B /* Assets.xcassets in Resources */,
+				0D766D9B2AA4691A00B9BB82 /* ApiConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0D766D832AA3B89200B9BB82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D766DA42AA4731100B9BB82 /* LocationServiceMock.swift in Sources */,
+				0D766DA02AA4703C00B9BB82 /* NetworkServiceMock.swift in Sources */,
+				0D766DA22AA4716E00B9BB82 /* LocationPermissionsMock.swift in Sources */,
+				0D766D8A2AA3B89200B9BB82 /* VenuesViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0DF183BA2A8CEF1800E9869B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D766DA92AA493D800B9BB82 /* CLLocation+Param.swift in Sources */,
 				0DF1840D2A8D0A0700E9869B /* LocationPermissions.swift in Sources */,
 				0DF183DD2A8CF15D00E9869B /* VenuesCoordinator.swift in Sources */,
 				0DF183DB2A8CF13800E9869B /* Coordinator.swift in Sources */,
@@ -310,8 +436,12 @@
 				0DF183C22A8CEF1800E9869B /* AppDelegate.swift in Sources */,
 				0DF183FB2A8CFC6100E9869B /* APIRoute.swift in Sources */,
 				0DF183C42A8CEF1800E9869B /* SceneDelegate.swift in Sources */,
+				0D766D982AA4634000B9BB82 /* ViewBuilder.swift in Sources */,
 				0D766D802AA3A81800B9BB82 /* VenueListView.swift in Sources */,
+				0D766D922AA3B8DA00B9BB82 /* AppDIContainer.swift in Sources */,
 				0DF184082A8CFF0900E9869B /* Venue.swift in Sources */,
+				0D766D952AA4632600B9BB82 /* VenuesViewBuilder.swift in Sources */,
+				0D766D9E2AA46D5200B9BB82 /* SecuredConfig.swift in Sources */,
 				0DF184012A8CFD2400E9869B /* VenuesSearchRoute.swift in Sources */,
 				0DF183F92A8CFC3900E9869B /* NetworkService.swift in Sources */,
 				0DF183F52A8CFB3F00E9869B /* Constants.swift in Sources */,
@@ -321,6 +451,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0D766D8C2AA3B89200B9BB82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0DF183BD2A8CEF1800E9869B /* FoursquareVenues */;
+			targetProxy = 0D766D8B2AA3B89200B9BB82 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0DF183CC2A8CEF1900E9869B /* LaunchScreen.storyboard */ = {
@@ -334,6 +472,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0D766D8E2AA3B89200B9BB82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4SQL6EMX7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danmerlea.FoursquareVenuesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoursquareVenues.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FoursquareVenues";
+			};
+			name = Debug;
+		};
+		0D766D8F2AA3B89200B9BB82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N4SQL6EMX7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danmerlea.FoursquareVenuesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FoursquareVenues.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FoursquareVenues";
+			};
+			name = Release;
+		};
 		0DF183D02A8CEF1900E9869B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -505,6 +679,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0D766D8D2AA3B89200B9BB82 /* Build configuration list for PBXNativeTarget "FoursquareVenuesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D766D8E2AA3B89200B9BB82 /* Debug */,
+				0D766D8F2AA3B89200B9BB82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0DF183B92A8CEF1800E9869B /* Build configuration list for PBXProject "Foursquare Venues" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -514,7 +697,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0DF183D22A8CEF1900E9869B /* Build configuration list for PBXNativeTarget "Foursquare Venues" */ = {
+		0DF183D22A8CEF1900E9869B /* Build configuration list for PBXNativeTarget "FoursquareVenues" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0DF183D32A8CEF1900E9869B /* Debug */,

@@ -25,7 +25,7 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
     
     /// Publishers
     @Published var venues: [Venue] = []
-    @Published var radius: Float = 0.3 // TODO: move to constants
+    @Published var radius: Float = Constants.VenuesSearch.radiusSearch
     @Published var title: String = ""
     @Published var error: ServerErrorState?
     
@@ -34,6 +34,7 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
     private var searchSubscription: AnyCancellable?
     private var inputsSubscription: AnyCancellable?
     private var lastLocationAvailable: CLLocationCoordinate2D?
+    private let distanceRange: Float
     private let pageSize: Int
     
     /// Dependencies
@@ -45,11 +46,13 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
         networkService: NetworkService,
         locationPermissions: PermissionsType,
         locationService: LocationService,
+        distanceRange: Float = Constants.VenuesSearch.radiusRange,
         pageSize: Int = Constants.Foursquare.pageSize
     ) {
         self.networkService = networkService
         self.locationPermissions = locationPermissions
         self.locationService = locationService
+        self.distanceRange = distanceRange
         self.pageSize = pageSize
         
         askForLocationPermissionIfNeeded()
@@ -71,14 +74,14 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
     // MARK: - Private
     
     private func radiusValueToMeters() -> Int {
-        Int(radius * 2_000) // 0-2km
+        Int(radius * distanceRange)
     }
     
     private func updateTitle(for location: CLLocation?) {
         if location == nil {
-            title = "Searching for GPS"
+            title = Constants.VenuesSearch.searchGpsTitle
         } else {
-            title = "Venues around you"
+            title = Constants.VenuesSearch.venuesTitle
         }
     }
     

@@ -17,7 +17,7 @@ struct VenuesSearchRoute: FoursquareAPIRoute {
     init(ll: CLLocationCoordinate2D, radius: Int, limit: Int) {
         self.parameters = [
             "radius": radius,
-            "ll": "\(ll.latitude),\(ll.longitude)",
+            "ll": ll.toParamString(),
             "limit": String(limit)
         ]
     }

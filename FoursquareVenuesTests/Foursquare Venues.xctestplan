@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "DCF1E85C-F0AC-4F00-AAE5-4EEED24C4EC7",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Foursquare Venues.xcodeproj",
+      "identifier" : "0DF183BD2A8CEF1800E9869B",
+      "name" : "FoursquareVenues"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Foursquare Venues.xcodeproj",
+        "identifier" : "0D766D862AA3B89200B9BB82",
+        "name" : "FoursquareVenuesTests"
+      }
+    }
+  ],
+  "version" : 1
+}
