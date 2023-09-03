@@ -34,6 +34,7 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
     private var searchSubscription: AnyCancellable?
     private var inputsSubscription: AnyCancellable?
     private var lastLocationAvailable: CLLocationCoordinate2D?
+    private let pageSize: Int
     
     /// Dependencies
     private let networkService: NetworkService
@@ -43,11 +44,13 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
     init(
         networkService: NetworkService,
         locationPermissions: PermissionsType,
-        locationService: LocationService
+        locationService: LocationService,
+        pageSize: Int = Constants.Foursquare.pageSize
     ) {
         self.networkService = networkService
         self.locationPermissions = locationPermissions
         self.locationService = locationService
+        self.pageSize = pageSize
         
         askForLocationPermissionIfNeeded()
         updateTitle(for: nil)
@@ -107,7 +110,7 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
         
         lastLocationAvailable = location
         
-        let route = VenuesSearchRoute(ll: location, radius: radiusValueToMeters())
+        let route = VenuesSearchRoute(ll: location, radius: radiusValueToMeters(), limit: pageSize)
         searchSubscription = networkService.request(route: route)
             .receive(on: DispatchQueue.main)
             .map { $0.response.venues.filter {

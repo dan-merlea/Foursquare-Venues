@@ -15,14 +15,14 @@ import Foundation
 struct Constants {
     
     struct Foursquare {
-        let api = "api.foursquare.com"
-        let version = "20191001"
-        let pageSize = 50
+        static let api = "api.foursquare.com"
+        static let version = "20191001"
+        static let pageSize = 50
         
         @SecuredConfig("ClientId")
-        var clientId: String
+        static var clientId: String
         
         @SecuredConfig("ClientSecret")
-        var clientSecret: String
+        static var clientSecret: String
     }
 }

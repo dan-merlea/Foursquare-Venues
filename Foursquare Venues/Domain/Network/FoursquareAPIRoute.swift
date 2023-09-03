@@ -12,12 +12,10 @@ protocol FoursquareAPIRoute: APIRoute {}
 extension FoursquareAPIRoute {
     
     func getQueryItems() -> [URLQueryItem] {
-        let config = Constants.Foursquare()
         var queryItems = [
-            URLQueryItem(name: "v", value: config.version),
-            URLQueryItem(name: "client_id", value: config.clientId),
-            URLQueryItem(name: "client_secret", value: config.clientSecret),
-            URLQueryItem(name: "limit", value: String(config.pageSize))
+            URLQueryItem(name: "v", value: Constants.Foursquare.version),
+            URLQueryItem(name: "client_id", value: Constants.Foursquare.clientId),
+            URLQueryItem(name: "client_secret", value: Constants.Foursquare.clientSecret)
         ]
         
         parameters.forEach {

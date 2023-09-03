@@ -33,7 +33,7 @@ extension APIRoute {
     func getUrl() -> URL? {
         var component = URLComponents()
         component.scheme = "https"
-        component.host = Constants.Foursquare().api
+        component.host = Constants.Foursquare.api
         component.path = path
         if method == .get {
             component.queryItems = getQueryItems()
