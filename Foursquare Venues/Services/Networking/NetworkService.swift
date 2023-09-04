@@ -21,7 +21,7 @@ final class DefaultNetworkService: NetworkService {
     }
     
     func request<T: APIRoute>(route: T) -> AnyPublisher<T.Response, ServerErrorState> where T.Response: Decodable {
-        guard let request = getUrlRequest(route: route) else {
+        guard let request = urlRequest(route: route) else {
             return Fail(error: .invalidURL).eraseToAnyPublisher()
         }
         return session
@@ -40,7 +40,7 @@ final class DefaultNetworkService: NetworkService {
     }
     
     /// Create URL request
-    private func getUrlRequest<T: APIRoute>(route: T) -> URLRequest? {
+    private func urlRequest<T: APIRoute>(route: T) -> URLRequest? {
         guard let urlString = route.url() else {
             return nil
         }

@@ -16,5 +16,4 @@ struct VenuesViewBuilder: ViewBuilder {
         let view = VenuesView(viewModel: viewModel)
         return UIHostingController(rootView: view)
     }
-    
 }

@@ -194,5 +194,4 @@ final class VenuesViewModelTests: XCTestCase {
         
         wait(for: [expectation], timeout: timeout)
     }
-
 }
