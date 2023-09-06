@@ -12,8 +12,7 @@ import CoreLocation
 
 final class VenuesViewModelTests: XCTestCase {
     
-    private let rangeDistance: Float = 10
-    private var subscriptions: Set<AnyCancellable> = []
+    private let distanceRange: Float = 50
     
     private let timeout: TimeInterval = 1
     private var sut: DefaultVenuesViewModel<LocationPermissionsMock>?
@@ -29,7 +28,8 @@ final class VenuesViewModelTests: XCTestCase {
             networkService: networkServiceMock,
             locationPermissions: locationPermissionsMock,
             locationService: locationServiceMock,
-            distanceRange: rangeDistance,
+            scheduler: .immediate,
+            distanceRange: distanceRange,
             pageSize: 1
         )
     }
@@ -49,10 +49,10 @@ final class VenuesViewModelTests: XCTestCase {
     }
     
     func test_updateRadius_shouldHaveCorrectRange() {
-        let stub: Float = 0.5
-        let expectation = Int(stub * rangeDistance).toDistanceString()
+        let stubRadius: Float = 0.5
+        let expectation = Int(stubRadius * distanceRange).toDistanceString()
         
-        sut?.radius = stub
+        sut?.radius = stubRadius
         XCTAssertTrue(
             sut?.currentSearchRadiusText().contains(expectation) == true,
             "Expected 'Search Radius Text' to contain the range"
@@ -64,134 +64,103 @@ final class VenuesViewModelTests: XCTestCase {
     }
     
     func test_locationPermission_isRequested() {
-        let expectation = XCTestExpectation(description: "LocationPermission is requested")
-
-        locationPermissionsMock.status
-            .sink { _ in
-                expectation.fulfill()
-            }
-            .store(in: &subscriptions)
-        
-        wait(for: [expectation], timeout: timeout)
-    }
-    
-    func test_locationService_isReady() {
-        let expectation = XCTestExpectation(description: "LocationService is ready")
-
-        locationServiceMock.state
-            .sink { state in
-                XCTAssertTrue(state == .ready)
-                expectation.fulfill()
-            }
-            .store(in: &subscriptions)
-        
-        wait(for: [expectation], timeout: timeout)
+        XCTAssertEqual(locationPermissionsMock.statusSubject.value, .authorizedWhenInUse)
     }
     
     func test_locationUpdate_triggersNewRequest() {
-        let expectation = XCTestExpectation(description: "Location update triggers a new request")
         
-        let radiusExpected = Int((sut?.radius ?? 0) * rangeDistance)
-        let stub = LocationServiceMock.stub
+        let radiusExpected = Int((sut?.radius ?? 0) * distanceRange)
+        let stub = CLLocation.stub
         
+        /// Update route
+        var lastRoute: (any APIRoute)!
         networkServiceMock.lastRoute = { route in
-            XCTAssertEqual(route.parameters["radius"] as? Int, radiusExpected)
-            XCTAssertEqual(
-                route.parameters["ll"] as? String,
-                stub.coordinate.toParamString()
-            )
-            expectation.fulfill()
+            lastRoute = route
         }
         
+        /// Update inputs
         locationServiceMock.locationSubject.send(stub)
         
-        wait(for: [expectation], timeout: timeout)
+        /// Test outcomes
+        XCTAssertEqual(lastRoute.parameters["radius"] as? Int, radiusExpected)
+        XCTAssertEqual(
+            lastRoute.parameters["ll"] as? String,
+            stub.coordinate.toParamString()
+        )
     }
     
     func test_venuesAndTitle_areUpdated_forLocation() {
-        let expectation = XCTestExpectation(description: "Venues and screen title are updated on location change")
         
-        let stub = LocationServiceMock.stub
-        sut?.$venues
-            .dropFirst(1)
-            .sink { [weak self] venues in
-                XCTAssertEqual(venues.count, NetworkServiceMock.stub.response.venues.count)
-                XCTAssertEqual(self?.sut?.title, Constants.VenuesSearch.venuesTitle)
-                expectation.fulfill()
-            }
-            .store(in: &subscriptions)
-        
-        locationServiceMock.locationSubject.send(stub)
-        
-        wait(for: [expectation], timeout: timeout)
-    }
-    
-    func test_venues_areFiltered_basedOnRange() {
-        let expectation = XCTestExpectation(description: "Venues are filtered based on range")
+        let locationStub = CLLocation.stub
+        let responseStub = ApiResponseBody.stub(ids: ["1", "2"])
         
         /// Forcing a request with 2 results
         networkServiceMock.requestResult = Result<Any, ServerErrorState>
-            .success(NetworkServiceMock.stubList)
+            .success(responseStub)
             .publisher
             .eraseToAnyPublisher()
         
-        let stub = LocationServiceMock.stub
-        sut?.$venues
-            .dropFirst(1)
-            .sink { venues in
-                XCTAssertEqual(venues.count, 1, "Expecting 1 venue to be filtered by range")
-                expectation.fulfill()
-            }
-            .store(in: &subscriptions)
+        /// Update inputs
+        sut?.radius = 1
+        locationServiceMock.locationSubject.send(locationStub)
         
-        locationServiceMock.locationSubject.send(stub)
+        /// Test outcomes
+        XCTAssertEqual(sut?.venues.count, responseStub.response.venues.count)
+        XCTAssertEqual(sut?.title, Constants.VenuesSearch.venuesTitle)
+    }
+    
+    func test_venues_areFiltered_basedOnRange() {
         
-        wait(for: [expectation], timeout: timeout)
+        let locationStub = CLLocation.stub
+        let responseStub = ApiResponseBody.stub(ids: ["1", "2"])
+        
+        /// Forcing a request with 2 results
+        networkServiceMock.requestResult = Result<Any, ServerErrorState>
+            .success(responseStub)
+            .publisher
+            .eraseToAnyPublisher()
+        
+        /// Update inputs
+        sut?.radius = 0.5 / distanceRange /// needs to be  <10m
+        locationServiceMock.locationSubject.send(locationStub)
+        
+        XCTAssertEqual(sut?.venues.count, 1, "Expecting 1 venue to be filtered by range")
     }
     
     func test_onRetry_willRepeatSameRequest() {
-        let expectation = XCTestExpectation(description: "On retry should request using the same params")
-
-        let stub = LocationServiceMock.stub
         
+        let stub = CLLocation.stub
+        
+        /// Count requests
         var runCount = 2
         networkServiceMock.lastRoute = { [weak self] route in
             runCount -= 1
             if runCount == 1 {
                 self?.sut?.onRetrySearch()
             }
-            if runCount == 0 {
-                expectation.fulfill()
-            }
         }
         
+        /// Update inputs
         locationServiceMock.locationSubject.send(stub)
         
-        wait(for: [expectation], timeout: timeout)
+        /// Test outcomes
+        XCTAssertEqual(runCount, 0)
     }
     
     func test_requestError_willUpdateUI() {
-        let expectation = XCTestExpectation(description: "On retry should request using the same params")
-
-        let locationStub = LocationServiceMock.stub
+        let locationStub = CLLocation.stub
         let errorStub = ServerErrorState.serverError
-        
+                
         /// Forcing a request error
         networkServiceMock.requestResult = Result<Any, ServerErrorState>
             .failure(errorStub)
             .publisher
             .eraseToAnyPublisher()
         
-        sut?.$error
-            .dropFirst()
-            .sink(receiveValue: { error in
-                XCTAssertEqual(error, errorStub)
-                expectation.fulfill()
-            })
-            .store(in: &subscriptions)
-        
+        /// Update inputs
         locationServiceMock.locationSubject.send(locationStub)
         
-        wait(for: [expectation], timeout: timeout)
+        /// Test outcomes
+        XCTAssertEqual(sut?.error, ErrorMessage.customMessage(errorStub.localizedDescription))
     }
 }

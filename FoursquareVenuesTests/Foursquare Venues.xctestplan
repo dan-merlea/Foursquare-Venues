@@ -13,7 +13,8 @@
       "containerPath" : "container:Foursquare Venues.xcodeproj",
       "identifier" : "0DF183BD2A8CEF1800E9869B",
       "name" : "FoursquareVenues"
-    }
+    },
+    "testExecutionOrdering" : "random"
   },
   "testTargets" : [
     {

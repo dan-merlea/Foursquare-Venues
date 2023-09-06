@@ -12,8 +12,6 @@ import CoreLocation
 
 class LocationServiceMock: LocationService {
     
-    static let stub = CLLocation(latitude: 23.4, longitude: 10)
-    
     /// Publishers
     var state: AnyPublisher<ServiceState, Never>
     var location: AnyPublisher<CLLocation?, Never>

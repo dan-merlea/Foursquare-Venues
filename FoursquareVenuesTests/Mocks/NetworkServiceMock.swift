@@ -11,38 +11,8 @@ import Combine
 
 class NetworkServiceMock: NetworkService {
     
-    static let stub = ApiResponseBody(response: Response(venues: [
-        Venue(
-            id: "1",
-            name: "Central Park",
-            location: VenueLocation(address: "City Center", distance: 0),
-            categories: [
-                VenueCategory(name: "", shortName: "Park", icon: VenueCategoryIcon(prefix: "img", suffix: "png"))
-            ]
-        )
-    ]))
-    
-    static let stubList = ApiResponseBody(response: Response(venues: [
-        Venue(
-            id: "1",
-            name: "Central Park",
-            location: VenueLocation(address: "City Center", distance: 0),
-            categories: [
-                VenueCategory(name: "", shortName: "Park", icon: VenueCategoryIcon(prefix: "img", suffix: "png"))
-            ]
-        ),
-        Venue(
-            id: "2",
-            name: "Restaurant",
-            location: VenueLocation(address: "City Center", distance: 10),
-            categories: [
-                VenueCategory(name: "", shortName: "Food", icon: VenueCategoryIcon(prefix: "img", suffix: "png"))
-            ]
-        )
-    ]))
-    
     var requestResult = Result<Any, ServerErrorState>
-        .success(NetworkServiceMock.stub)
+        .success(ApiResponseBody.stub(ids: ["1"]))
         .publisher
         .eraseToAnyPublisher()
     

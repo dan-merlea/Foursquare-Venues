@@ -18,19 +18,19 @@ class LocationPermissionsMock: Permissions {
     var status: AnyPublisher<CLAuthorizationStatus, Never>
     
     /// Subjects
-    let locationSubject = CurrentValueSubject<CLAuthorizationStatus, Never>(.notDetermined)
+    let statusSubject = CurrentValueSubject<CLAuthorizationStatus, Never>(.notDetermined)
     
     let locationService: LocationService
     
     init(locationService: LocationService) {
         self.locationService = locationService
-        self.status = locationSubject.eraseToAnyPublisher()
+        self.status = statusSubject.eraseToAnyPublisher()
     }
     
     func request() -> Future<CLAuthorizationStatus, Never> {
         Future { [weak self] promise in
             promise(.success(.authorizedWhenInUse))
-            self?.locationSubject.send(.authorizedWhenInUse)
+            self?.statusSubject.send(.authorizedWhenInUse)
             self?.locationService.ready()
         }
     }

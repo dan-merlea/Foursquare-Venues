@@ -8,12 +8,13 @@
 import Foundation
 import Combine
 import CoreLocation
+import CombineSchedulers
 
 protocol VenuesViewModel: ObservableObject {
     var venues: [Venue] { get set }
     var radius: Float { get set }
     var title: String { get set }
-    var error: ServerErrorState? { get set }
+    var error: ErrorMessage? { get set }
     
     func currentSearchRadiusText() -> String
     
@@ -27,7 +28,7 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
     @Published var venues: [Venue] = []
     @Published var radius: Float = Constants.VenuesSearch.radiusSearch
     @Published var title: String = ""
-    @Published var error: ServerErrorState?
+    @Published var error: ErrorMessage?
     
     /// Data
     private var subscriptions = Set<AnyCancellable>()
@@ -38,6 +39,7 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
     private let pageSize: Int
     
     /// Dependencies
+    private let scheduler: AnySchedulerOf<DispatchQueue>
     private let networkService: NetworkService
     private let locationPermissions: PermissionsType
     private let locationService: LocationService
@@ -46,6 +48,7 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
         networkService: NetworkService,
         locationPermissions: PermissionsType,
         locationService: LocationService,
+        scheduler: AnySchedulerOf<DispatchQueue> = .main,
         distanceRange: Float = Constants.VenuesSearch.radiusRange,
         pageSize: Int = Constants.Foursquare.pageSize
     ) {
@@ -54,6 +57,7 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
         self.locationService = locationService
         self.distanceRange = distanceRange
         self.pageSize = pageSize
+        self.scheduler = scheduler
         
         askForLocationPermissionIfNeeded()
         updateTitle(for: nil)
@@ -87,7 +91,12 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
     
     private func askForLocationPermissionIfNeeded() {
         locationPermissions.request()
+            .receive(on: scheduler)
             .sink { [weak self] status in
+                if status == .denied {
+                    self?.error = ErrorMessage.locationDenied
+                    return
+                }
                 self?.subscribeForInputUpdates()
             }
             .store(in: &subscriptions)
@@ -98,8 +107,9 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
         
         inputsSubscription = Publishers.CombineLatest(
             locationService.location,
-            $radius.throttle(for: .milliseconds(500), scheduler: DispatchQueue.main, latest: true)
+            $radius.throttle(for: .milliseconds(500), scheduler: scheduler, latest: true)
         )
+        .receive(on: scheduler)
         .sink { [weak self] location, _ in
             if let location = location {
                 self?.searchForVenues(location: location.coordinate)
@@ -115,7 +125,7 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
         
         let route = VenuesSearchRoute(ll: location, radius: radiusValueToMeters(), limit: pageSize)
         searchSubscription = networkService.request(route: route)
-            .receive(on: DispatchQueue.main)
+            .receive(on: scheduler)
             .map { $0.response.venues.filter {
                 $0.location.distance <= self.radiusValueToMeters()
             }}
@@ -129,7 +139,7 @@ final class DefaultVenuesViewModel<PermissionsType: Permissions>: VenuesViewMode
     private func requestFinishedWithStatus(status: Subscribers.Completion<ServerErrorState>) {
         switch status {
         case .failure(let error):
-            self.error = error
+            self.error = ErrorMessage.customMessage(error.localizedDescription)
         default: ()
         }
     }
