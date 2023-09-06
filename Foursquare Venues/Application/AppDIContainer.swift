@@ -44,14 +44,14 @@ final class AppDIContainer: DIContainer {
      }
      
      func register<Service>(type: Service.Type, componentBuilder: (DIResolver) -> Any) {
-         guard services["\(type)"] == nil else {
+         guard services[String(describing: type)] == nil else {
              return
          }
-         services["\(type)"] = componentBuilder(self)
+         services[String(describing: type)] = componentBuilder(self)
      }
 
      func resolve<Service>(type: Service.Type) -> Service {
-         guard let service = services["\(type)"] as? Service else {
+         guard let service = services[String(describing: type)] as? Service else {
              fatalError("\(type) dependency was not registered")
          }
          return service
