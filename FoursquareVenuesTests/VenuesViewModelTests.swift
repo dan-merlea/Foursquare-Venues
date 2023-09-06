@@ -43,8 +43,8 @@ final class VenuesViewModelTests: XCTestCase {
     
     func test_venues_initialValue_isEmpty() {
       XCTAssertTrue(
-            sut?.venues.isEmpty == true,
-            "Expected initial value to be empty"
+        sut?.venues.isEmpty == true,
+        "Expected initial value to be empty"
       )
     }
     
@@ -52,7 +52,10 @@ final class VenuesViewModelTests: XCTestCase {
         let stubRadius: Float = 0.5
         let expectation = Int(stubRadius * distanceRange).toDistanceString()
         
+        /// Update inputs
         sut?.radius = stubRadius
+        
+        /// Test outcomes
         XCTAssertTrue(
             sut?.currentSearchRadiusText().contains(expectation) == true,
             "Expected 'Search Radius Text' to contain the range"
